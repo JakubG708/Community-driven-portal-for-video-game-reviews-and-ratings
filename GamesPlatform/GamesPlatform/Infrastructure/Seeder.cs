@@ -1,4 +1,5 @@
 ﻿using GamesPlatform.Data;
+using GamesPlatform.Enums;
 using GamesPlatform.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -35,7 +36,7 @@ namespace GamesPlatform.Infrastructure
             {
                 admin = new IdentityUser
                 {
-                    UserName = "admin",
+                    UserName = adminEmail,
                     Email = adminEmail,
                     EmailConfirmed = true
                 };
@@ -51,7 +52,7 @@ namespace GamesPlatform.Infrastructure
             {
                 user = new IdentityUser
                 {
-                    UserName = "user",
+                    UserName = userEmail,
                     Email = userEmail,
                     EmailConfirmed = true
                 };
@@ -60,16 +61,7 @@ namespace GamesPlatform.Infrastructure
                     await userManager.AddToRoleAsync(user, "User");
             }
 
-            if(!dbContext.Platforms.Any())
-            {
-                var platform = new Platform
-                {
-                    Name = "PC"
-                };
-                await dbContext.Platforms.AddAsync(platform);
-                await dbContext.SaveChangesAsync();
-            }
-            var firstPlatform = await dbContext.Platforms.ToListAsync();
+            
 
             if (!dbContext.Games.Any())
             {
@@ -80,7 +72,10 @@ namespace GamesPlatform.Infrastructure
                     ReleaseYear = new DateTime(2015, 5, 18, 0, 0, 0, DateTimeKind.Utc),
                     Developer = "CD Projekt Red",
                     Publisher = "CD Projekt",
-                    Platforms = firstPlatform,
+                    Platforms = new List<Platform>
+                    {
+                        new Platform { PlatformName = Enums.Platforms.PC }
+                    },
                     Description = "Kultowa gra RPG o przygodach Geralta z Rivii.",
                     ImageUrl = "",
                     ThumbNailUrl = ""

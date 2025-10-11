@@ -11,7 +11,7 @@ namespace GamesPlatform.Models
         public DateTime ReleaseYear { get; set; }
         public string Developer { get; set; }
         public string Publisher { get; set; }
-        public ICollection<Platform> Platforms { get; set; } = new List<Platform>();
+        public ICollection<Platform>? Platforms { get; set; } = new List<Platform>();
 
         public string Description { get; set; }
         public string? ImageUrl { get; set; }

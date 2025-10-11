@@ -101,12 +101,11 @@ namespace GamesPlatform.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("PlatformId"));
 
-                    b.Property<int?>("GameId")
+                    b.Property<int>("GameId")
                         .HasColumnType("integer");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("PlatformName")
+                        .HasColumnType("integer");
 
                     b.HasKey("PlatformId");
 
@@ -396,9 +395,13 @@ namespace GamesPlatform.Migrations
 
             modelBuilder.Entity("GamesPlatform.Models.Platform", b =>
                 {
-                    b.HasOne("GamesPlatform.Models.Game", null)
+                    b.HasOne("GamesPlatform.Models.Game", "Game")
                         .WithMany("Platforms")
-                        .HasForeignKey("GameId");
+                        .HasForeignKey("GameId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Game");
                 });
 
             modelBuilder.Entity("GamesPlatform.Models.Rating", b =>

@@ -211,8 +211,8 @@ namespace GamesPlatform.Migrations
                 {
                     PlatformId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "text", nullable: false),
-                    GameId = table.Column<int>(type: "integer", nullable: true)
+                    PlatformName = table.Column<int>(type: "integer", nullable: false),
+                    GameId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -221,7 +221,8 @@ namespace GamesPlatform.Migrations
                         name: "FK_Platforms_Games_GameId",
                         column: x => x.GameId,
                         principalTable: "Games",
-                        principalColumn: "GameId");
+                        principalColumn: "GameId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(

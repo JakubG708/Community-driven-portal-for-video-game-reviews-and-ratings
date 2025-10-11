@@ -18,7 +18,7 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
 {
-    options.SignIn.RequireConfirmedAccount = true;
+    options.SignIn.RequireConfirmedAccount = false;
 })
 .AddEntityFrameworkStores<ApplicationDbContext>()
 .AddDefaultTokenProviders();
@@ -44,7 +44,15 @@ else
 app.UseHttpsRedirection();
 app.UseRouting();
 
+
 app.UseAuthorization();
+
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    await Seeder.SeedAsync(services);
+}
 
 app.MapStaticAssets();
 
@@ -56,11 +64,6 @@ app.MapControllerRoute(
 app.MapRazorPages()
    .WithStaticAssets();
 
-using (var scope = app.Services.CreateScope())
-{
-    var services = scope.ServiceProvider;
-    await Seeder.SeedAsync(services);
-}
 
 
 app.Run();
