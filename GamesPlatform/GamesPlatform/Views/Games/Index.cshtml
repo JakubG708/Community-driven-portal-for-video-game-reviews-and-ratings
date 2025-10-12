@@ -1,3 +1,22 @@
 ﻿
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <table>
+            <thead></thead>
+            <tbody>
+                @foreach (var game in Model)
+                {
+                    <tr>
+                        <td>
+                            <a asp-action="Details" asp-route-id="@game.GameId">@game.Title</a>
+                        </td>
+                        <td>
+                            - @game.Description
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
 
-<p>Games controller</p>
+    </div>
+</div>

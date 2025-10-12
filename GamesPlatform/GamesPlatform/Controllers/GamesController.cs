@@ -1,12 +1,20 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using GamesPlatform.Services.Games;
+using Microsoft.AspNetCore.Mvc;
 
 namespace GamesPlatform.Controllers
 {
     public class GamesController : Controller
     {
-        public IActionResult Index()
+        private readonly IGamesService gamesService;
+
+        public GamesController(IGamesService gamesService)
         {
-            return View();
+            this.gamesService = gamesService;
+        }
+        public async Task<IActionResult> Index()
+        {
+            var games = await gamesService.GetGamesAsync();
+            return View(games);
         }
     }
 }
