@@ -1,5 +1,6 @@
 using GamesPlatform.Data;
 using GamesPlatform.Infrastructure;
+using GamesPlatform.Services.Games;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,6 +26,8 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
 builder.Services.AddRazorPages();
 builder.Services.AddControllersWithViews();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<IGamesService, GamesService>();
 
 var app = builder.Build();
 
