@@ -16,5 +16,11 @@ namespace GamesPlatform.Controllers
             var games = await gamesService.GetGamesAsync();
             return View(games);
         }
+
+        public async Task<IActionResult> Game(int id)
+        {
+            var game = await gamesService.GetGameByIdAsync(id);
+            return View(game);
+        }
     }
 }

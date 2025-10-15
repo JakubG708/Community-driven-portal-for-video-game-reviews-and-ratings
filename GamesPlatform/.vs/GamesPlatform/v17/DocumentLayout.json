@@ -3,28 +3,48 @@
   "WorkspaceRootPath": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7AC7B593-E610-4CA9-B510-6771EBD1846B}|GamesPlatform\\GamesPlatform.csproj|c:\\users\\agnel\\desktop\\praca_inzynierska\\projekt\\community-driven-portal-for-video-game-reviews-and-ratings\\gamesplatform\\gamesplatform\\controllers\\gamescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7AC7B593-E610-4CA9-B510-6771EBD1846B}|GamesPlatform\\GamesPlatform.csproj|solutionrelative:gamesplatform\\controllers\\gamescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7AC7B593-E610-4CA9-B510-6771EBD1846B}|GamesPlatform\\GamesPlatform.csproj|c:\\users\\agnel\\desktop\\praca_inzynierska\\projekt\\community-driven-portal-for-video-game-reviews-and-ratings\\gamesplatform\\gamesplatform\\views\\games\\game.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7AC7B593-E610-4CA9-B510-6771EBD1846B}|GamesPlatform\\GamesPlatform.csproj|solutionrelative:gamesplatform\\views\\games\\game.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7AC7B593-E610-4CA9-B510-6771EBD1846B}|GamesPlatform\\GamesPlatform.csproj|c:\\users\\agnel\\desktop\\praca_inzynierska\\projekt\\community-driven-portal-for-video-game-reviews-and-ratings\\gamesplatform\\gamesplatform\\dtos\\gamedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7AC7B593-E610-4CA9-B510-6771EBD1846B}|GamesPlatform\\GamesPlatform.csproj|solutionrelative:gamesplatform\\dtos\\gamedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7AC7B593-E610-4CA9-B510-6771EBD1846B}|GamesPlatform\\GamesPlatform.csproj|c:\\users\\agnel\\desktop\\praca_inzynierska\\projekt\\community-driven-portal-for-video-game-reviews-and-ratings\\gamesplatform\\gamesplatform\\views\\games\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{7AC7B593-E610-4CA9-B510-6771EBD1846B}|GamesPlatform\\GamesPlatform.csproj|solutionrelative:gamesplatform\\views\\games\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7AC7B593-E610-4CA9-B510-6771EBD1846B}|GamesPlatform\\GamesPlatform.csproj|c:\\users\\agnel\\desktop\\praca_inzynierska\\projekt\\community-driven-portal-for-video-game-reviews-and-ratings\\gamesplatform\\gamesplatform\\models\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7AC7B593-E610-4CA9-B510-6771EBD1846B}|GamesPlatform\\GamesPlatform.csproj|solutionrelative:gamesplatform\\models\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7AC7B593-E610-4CA9-B510-6771EBD1846B}|GamesPlatform\\GamesPlatform.csproj|c:\\users\\agnel\\desktop\\praca_inzynierska\\projekt\\community-driven-portal-for-video-game-reviews-and-ratings\\gamesplatform\\gamesplatform\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7AC7B593-E610-4CA9-B510-6771EBD1846B}|GamesPlatform\\GamesPlatform.csproj|solutionrelative:gamesplatform\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7AC7B593-E610-4CA9-B510-6771EBD1846B}|GamesPlatform\\GamesPlatform.csproj|c:\\users\\agnel\\desktop\\praca_inzynierska\\projekt\\community-driven-portal-for-video-game-reviews-and-ratings\\gamesplatform\\gamesplatform\\controllers\\gamescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7AC7B593-E610-4CA9-B510-6771EBD1846B}|GamesPlatform\\GamesPlatform.csproj|solutionrelative:gamesplatform\\controllers\\gamescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7AC7B593-E610-4CA9-B510-6771EBD1846B}|GamesPlatform\\GamesPlatform.csproj|c:\\users\\agnel\\desktop\\praca_inzynierska\\projekt\\community-driven-portal-for-video-game-reviews-and-ratings\\gamesplatform\\gamesplatform\\services\\games\\gamesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7AC7B593-E610-4CA9-B510-6771EBD1846B}|GamesPlatform\\GamesPlatform.csproj|solutionrelative:gamesplatform\\services\\games\\gamesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{7AC7B593-E610-4CA9-B510-6771EBD1846B}|GamesPlatform\\GamesPlatform.csproj|c:\\users\\agnel\\desktop\\praca_inzynierska\\projekt\\community-driven-portal-for-video-game-reviews-and-ratings\\gamesplatform\\gamesplatform\\models\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7AC7B593-E610-4CA9-B510-6771EBD1846B}|GamesPlatform\\GamesPlatform.csproj|solutionrelative:gamesplatform\\models\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{7AC7B593-E610-4CA9-B510-6771EBD1846B}|GamesPlatform\\GamesPlatform.csproj|c:\\users\\agnel\\desktop\\praca_inzynierska\\projekt\\community-driven-portal-for-video-game-reviews-and-ratings\\gamesplatform\\gamesplatform\\services\\games\\igamesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7AC7B593-E610-4CA9-B510-6771EBD1846B}|GamesPlatform\\GamesPlatform.csproj|solutionrelative:gamesplatform\\services\\games\\igamesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7AC7B593-E610-4CA9-B510-6771EBD1846B}|GamesPlatform\\GamesPlatform.csproj|c:\\users\\agnel\\desktop\\praca_inzynierska\\projekt\\community-driven-portal-for-video-game-reviews-and-ratings\\gamesplatform\\gamesplatform\\models\\rating.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7AC7B593-E610-4CA9-B510-6771EBD1846B}|GamesPlatform\\GamesPlatform.csproj|solutionrelative:gamesplatform\\models\\rating.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7AC7B593-E610-4CA9-B510-6771EBD1846B}|GamesPlatform\\GamesPlatform.csproj|c:\\users\\agnel\\desktop\\praca_inzynierska\\projekt\\community-driven-portal-for-video-game-reviews-and-ratings\\gamesplatform\\gamesplatform\\models\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7AC7B593-E610-4CA9-B510-6771EBD1846B}|GamesPlatform\\GamesPlatform.csproj|solutionrelative:gamesplatform\\models\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7AC7B593-E610-4CA9-B510-6771EBD1846B}|GamesPlatform\\GamesPlatform.csproj|c:\\users\\agnel\\desktop\\praca_inzynierska\\projekt\\community-driven-portal-for-video-game-reviews-and-ratings\\gamesplatform\\gamesplatform\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7AC7B593-E610-4CA9-B510-6771EBD1846B}|GamesPlatform\\GamesPlatform.csproj|solutionrelative:gamesplatform\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7AC7B593-E610-4CA9-B510-6771EBD1846B}|GamesPlatform\\GamesPlatform.csproj|c:\\users\\agnel\\desktop\\praca_inzynierska\\projekt\\community-driven-portal-for-video-game-reviews-and-ratings\\gamesplatform\\gamesplatform\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7AC7B593-E610-4CA9-B510-6771EBD1846B}|GamesPlatform\\GamesPlatform.csproj|solutionrelative:gamesplatform\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7AC7B593-E610-4CA9-B510-6771EBD1846B}|GamesPlatform\\GamesPlatform.csproj|c:\\users\\agnel\\desktop\\praca_inzynierska\\projekt\\community-driven-portal-for-video-game-reviews-and-ratings\\gamesplatform\\gamesplatform\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -37,10 +57,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{7AC7B593-E610-4CA9-B510-6771EBD1846B}|GamesPlatform\\GamesPlatform.csproj|c:\\users\\agnel\\desktop\\praca_inzynierska\\projekt\\community-driven-portal-for-video-game-reviews-and-ratings\\gamesplatform\\gamesplatform\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7AC7B593-E610-4CA9-B510-6771EBD1846B}|GamesPlatform\\GamesPlatform.csproj|solutionrelative:gamesplatform\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7AC7B593-E610-4CA9-B510-6771EBD1846B}|GamesPlatform\\GamesPlatform.csproj|c:\\users\\agnel\\desktop\\praca_inzynierska\\projekt\\community-driven-portal-for-video-game-reviews-and-ratings\\gamesplatform\\gamesplatform\\models\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7AC7B593-E610-4CA9-B510-6771EBD1846B}|GamesPlatform\\GamesPlatform.csproj|solutionrelative:gamesplatform\\models\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7AC7B593-E610-4CA9-B510-6771EBD1846B}|GamesPlatform\\GamesPlatform.csproj|c:\\users\\agnel\\desktop\\praca_inzynierska\\projekt\\community-driven-portal-for-video-game-reviews-and-ratings\\gamesplatform\\gamesplatform\\views\\rankings\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -131,20 +147,12 @@
       "RelativeMoniker": "D:0:0:{7AC7B593-E610-4CA9-B510-6771EBD1846B}|GamesPlatform\\GamesPlatform.csproj|solutionrelative:gamesplatform\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7AC7B593-E610-4CA9-B510-6771EBD1846B}|GamesPlatform\\GamesPlatform.csproj|c:\\users\\agnel\\desktop\\praca_inzynierska\\projekt\\community-driven-portal-for-video-game-reviews-and-ratings\\gamesplatform\\gamesplatform\\models\\rating.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7AC7B593-E610-4CA9-B510-6771EBD1846B}|GamesPlatform\\GamesPlatform.csproj|solutionrelative:gamesplatform\\models\\rating.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Migrations\\20251010213905_init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:GamesPlatform\\Migrations\\20251010213905_init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Data\\Migrations\\20251010213654_platforms table.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:GamesPlatform\\Data\\Migrations\\20251010213654_platforms table.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7AC7B593-E610-4CA9-B510-6771EBD1846B}|GamesPlatform\\GamesPlatform.csproj|c:\\users\\agnel\\desktop\\praca_inzynierska\\projekt\\community-driven-portal-for-video-game-reviews-and-ratings\\gamesplatform\\gamesplatform\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7AC7B593-E610-4CA9-B510-6771EBD1846B}|GamesPlatform\\GamesPlatform.csproj|solutionrelative:gamesplatform\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7AC7B593-E610-4CA9-B510-6771EBD1846B}|GamesPlatform\\GamesPlatform.csproj|c:\\users\\agnel\\desktop\\praca_inzynierska\\projekt\\community-driven-portal-for-video-game-reviews-and-ratings\\gamesplatform\\gamesplatform\\models\\library.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -174,8 +182,34 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Game.cshtml",
+              "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Views\\Games\\Game.cshtml",
+              "RelativeDocumentMoniker": "GamesPlatform\\Views\\Games\\Game.cshtml",
+              "ToolTip": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Views\\Games\\Game.cshtml",
+              "RelativeToolTip": "GamesPlatform\\Views\\Games\\Game.cshtml",
+              "ViewState": "AgIAACIAAAAAAAAAAAAiwDMAAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-15T10:42:55.969Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GameDTO.cs",
+              "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\DTOs\\GameDTO.cs",
+              "RelativeDocumentMoniker": "GamesPlatform\\DTOs\\GameDTO.cs",
+              "ToolTip": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\DTOs\\GameDTO.cs",
+              "RelativeToolTip": "GamesPlatform\\DTOs\\GameDTO.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAADwvxgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-15T10:04:21.847Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 4,
@@ -184,170 +218,40 @@
               "RelativeDocumentMoniker": "GamesPlatform\\Services\\Games\\GamesService.cs",
               "ToolTip": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Services\\Games\\GamesService.cs",
               "RelativeToolTip": "GamesPlatform\\Services\\Games\\GamesService.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAYwBQAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAYwCUAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-12T13:45:08.381Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "IGamesService.cs",
               "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Services\\Games\\IGamesService.cs",
               "RelativeDocumentMoniker": "GamesPlatform\\Services\\Games\\IGamesService.cs",
               "ToolTip": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Services\\Games\\IGamesService.cs",
               "RelativeToolTip": "GamesPlatform\\Services\\Games\\IGamesService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAUAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-12T13:35:13.727Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Views\\Users\\Index.cshtml",
-              "RelativeDocumentMoniker": "GamesPlatform\\Views\\Users\\Index.cshtml",
-              "ToolTip": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Views\\Users\\Index.cshtml",
-              "RelativeToolTip": "GamesPlatform\\Views\\Users\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-12T13:32:07.343Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "UsersController.cs",
-              "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Controllers\\UsersController.cs",
-              "RelativeDocumentMoniker": "GamesPlatform\\Controllers\\UsersController.cs",
-              "ToolTip": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Controllers\\UsersController.cs",
-              "RelativeToolTip": "GamesPlatform\\Controllers\\UsersController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-12T13:31:43.255Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Program.cs",
-              "RelativeDocumentMoniker": "GamesPlatform\\Program.cs",
-              "ToolTip": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Program.cs",
-              "RelativeToolTip": "GamesPlatform\\Program.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAAAB0AAAA6AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-10T19:20:10.925Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "GamesController.cs",
-              "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Controllers\\GamesController.cs",
-              "RelativeDocumentMoniker": "GamesPlatform\\Controllers\\GamesController.cs",
-              "ToolTip": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Controllers\\GamesController.cs",
-              "RelativeToolTip": "GamesPlatform\\Controllers\\GamesController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-12T13:13:10.138Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Views\\Games\\Index.cshtml",
-              "RelativeDocumentMoniker": "GamesPlatform\\Views\\Games\\Index.cshtml",
-              "ToolTip": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Views\\Games\\Index.cshtml",
-              "RelativeToolTip": "GamesPlatform\\Views\\Games\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-12T13:15:33.702Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "Game.cs",
               "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Models\\Game.cs",
               "RelativeDocumentMoniker": "GamesPlatform\\Models\\Game.cs",
               "ToolTip": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Models\\Game.cs",
               "RelativeToolTip": "GamesPlatform\\Models\\Game.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAA7wBQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAAA7wA8AAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-10T19:47:59.585Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Views\\Rankings\\Index.cshtml",
-              "RelativeDocumentMoniker": "GamesPlatform\\Views\\Rankings\\Index.cshtml",
-              "ToolTip": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Views\\Rankings\\Index.cshtml",
-              "RelativeToolTip": "GamesPlatform\\Views\\Rankings\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-12T13:27:15.23Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "RankingsController.cs",
-              "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Controllers\\RankingsController.cs",
-              "RelativeDocumentMoniker": "GamesPlatform\\Controllers\\RankingsController.cs",
-              "ToolTip": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Controllers\\RankingsController.cs",
-              "RelativeToolTip": "GamesPlatform\\Controllers\\RankingsController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-12T13:26:36.996Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Views\\Reviews\\Index.cshtml",
-              "RelativeDocumentMoniker": "GamesPlatform\\Views\\Reviews\\Index.cshtml",
-              "ToolTip": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Views\\Reviews\\Index.cshtml",
-              "RelativeToolTip": "GamesPlatform\\Views\\Reviews\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-12T13:22:24.255Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "ReviewsController.cs",
-              "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Controllers\\ReviewsController.cs",
-              "RelativeDocumentMoniker": "GamesPlatform\\Controllers\\ReviewsController.cs",
-              "ToolTip": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Controllers\\ReviewsController.cs",
-              "RelativeToolTip": "GamesPlatform\\Controllers\\ReviewsController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-12T13:20:53.167Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "GamesPlatform\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "GamesPlatform\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAACAAAABbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-11T18:27:25.394Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 8,
               "Title": "Review.cs",
               "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Models\\Review.cs",
               "RelativeDocumentMoniker": "GamesPlatform\\Models\\Review.cs",
@@ -360,7 +264,163 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Views\\Games\\Index.cshtml",
+              "RelativeDocumentMoniker": "GamesPlatform\\Views\\Games\\Index.cshtml",
+              "ToolTip": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Views\\Games\\Index.cshtml",
+              "RelativeToolTip": "GamesPlatform\\Views\\Games\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-12T13:15:33.702Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GamesController.cs",
+              "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Controllers\\GamesController.cs",
+              "RelativeDocumentMoniker": "GamesPlatform\\Controllers\\GamesController.cs",
+              "ToolTip": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Controllers\\GamesController.cs",
+              "RelativeToolTip": "GamesPlatform\\Controllers\\GamesController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA8AAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-12T13:13:10.138Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "GamesPlatform\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "GamesPlatform\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-10T19:34:27.743Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Rating.cs",
+              "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Models\\Rating.cs",
+              "RelativeDocumentMoniker": "GamesPlatform\\Models\\Rating.cs",
+              "ToolTip": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Models\\Rating.cs",
+              "RelativeToolTip": "GamesPlatform\\Models\\Rating.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAuwBMAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-10T19:53:10.641Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Program.cs",
+              "RelativeDocumentMoniker": "GamesPlatform\\Program.cs",
+              "ToolTip": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Program.cs",
+              "RelativeToolTip": "GamesPlatform\\Program.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAAAB0AAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-10T19:20:10.925Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Views\\Users\\Index.cshtml",
+              "RelativeDocumentMoniker": "GamesPlatform\\Views\\Users\\Index.cshtml",
+              "ToolTip": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Views\\Users\\Index.cshtml",
+              "RelativeToolTip": "GamesPlatform\\Views\\Users\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-12T13:32:07.343Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "GamesPlatform\\Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "GamesPlatform\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-12T13:31:43.255Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Views\\Rankings\\Index.cshtml",
+              "RelativeDocumentMoniker": "GamesPlatform\\Views\\Rankings\\Index.cshtml",
+              "ToolTip": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Views\\Rankings\\Index.cshtml",
+              "RelativeToolTip": "GamesPlatform\\Views\\Rankings\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-12T13:27:15.23Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "RankingsController.cs",
+              "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Controllers\\RankingsController.cs",
+              "RelativeDocumentMoniker": "GamesPlatform\\Controllers\\RankingsController.cs",
+              "ToolTip": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Controllers\\RankingsController.cs",
+              "RelativeToolTip": "GamesPlatform\\Controllers\\RankingsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-12T13:26:36.996Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 18,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Views\\Reviews\\Index.cshtml",
+              "RelativeDocumentMoniker": "GamesPlatform\\Views\\Reviews\\Index.cshtml",
+              "ToolTip": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Views\\Reviews\\Index.cshtml",
+              "RelativeToolTip": "GamesPlatform\\Views\\Reviews\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-12T13:22:24.255Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "ReviewsController.cs",
+              "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Controllers\\ReviewsController.cs",
+              "RelativeDocumentMoniker": "GamesPlatform\\Controllers\\ReviewsController.cs",
+              "ToolTip": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Controllers\\ReviewsController.cs",
+              "RelativeToolTip": "GamesPlatform\\Controllers\\ReviewsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-12T13:20:53.167Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "GamesPlatform\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "GamesPlatform\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACAAAABbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-11T18:27:25.394Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
               "Title": "Register.cshtml.cs",
               "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
               "RelativeDocumentMoniker": "GamesPlatform\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
@@ -373,7 +433,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 21,
               "Title": "HomeController.cs",
               "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "GamesPlatform\\Controllers\\HomeController.cs",
@@ -386,7 +446,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 15,
               "Title": "Seeder.cs",
               "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Infrastructure\\Seeder.cs",
               "RelativeDocumentMoniker": "GamesPlatform\\Infrastructure\\Seeder.cs",
@@ -399,7 +459,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 17,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "GamesPlatform\\Views\\Home\\Index.cshtml",
@@ -412,7 +472,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 23,
               "Title": "Login.cshtml.cs",
               "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Areas\\Identity\\Pages\\Account\\Login.cshtml.cs",
               "RelativeDocumentMoniker": "GamesPlatform\\Areas\\Identity\\Pages\\Account\\Login.cshtml.cs",
@@ -425,7 +485,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 20,
               "Title": "_ViewStart.cshtml",
               "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Areas\\Identity\\Pages\\_ViewStart.cshtml",
               "RelativeDocumentMoniker": "GamesPlatform\\Areas\\Identity\\Pages\\_ViewStart.cshtml",
@@ -438,7 +498,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 24,
               "Title": "Login.cshtml",
               "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
               "RelativeDocumentMoniker": "GamesPlatform\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
@@ -451,7 +511,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 25,
               "Title": "Register.cshtml",
               "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
               "RelativeDocumentMoniker": "GamesPlatform\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
@@ -464,7 +524,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 27,
               "Title": "_LoginPartial.cshtml",
               "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Views\\Shared\\_LoginPartial.cshtml",
               "RelativeDocumentMoniker": "GamesPlatform\\Views\\Shared\\_LoginPartial.cshtml",
@@ -476,7 +536,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 26,
               "Title": "ScaffoldingReadMe.txt",
               "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\ScaffoldingReadMe.txt",
               "RelativeDocumentMoniker": "GamesPlatform\\ScaffoldingReadMe.txt",
@@ -488,7 +548,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 28,
               "Title": "_ViewStart.cshtml",
               "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Views\\_ViewStart.cshtml",
               "RelativeDocumentMoniker": "GamesPlatform\\Views\\_ViewStart.cshtml",
@@ -500,7 +560,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 29,
               "Title": "_ViewImports.cshtml",
               "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Views\\_ViewImports.cshtml",
               "RelativeDocumentMoniker": "GamesPlatform\\Views\\_ViewImports.cshtml",
@@ -512,7 +572,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 30,
               "Title": "Error.cshtml",
               "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Views\\Shared\\Error.cshtml",
               "RelativeDocumentMoniker": "GamesPlatform\\Views\\Shared\\Error.cshtml",
@@ -524,7 +584,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 31,
               "Title": "_ValidationScriptsPartial.cshtml",
               "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
               "RelativeDocumentMoniker": "GamesPlatform\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
@@ -536,7 +596,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 42,
               "Title": "20251011174407_init.cs",
               "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Migrations\\20251011174407_init.cs",
               "RelativeDocumentMoniker": "GamesPlatform\\Migrations\\20251011174407_init.cs",
@@ -548,7 +608,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 32,
               "Title": "20251011174326_platform changes.cs",
               "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Migrations\\20251011174326_platform changes.cs",
               "RelativeDocumentMoniker": "GamesPlatform\\Migrations\\20251011174326_platform changes.cs",
@@ -560,7 +620,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 34,
               "Title": "Platforms.cs",
               "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Enums\\Platforms.cs",
               "RelativeDocumentMoniker": "GamesPlatform\\Enums\\Platforms.cs",
@@ -572,7 +632,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 37,
               "Title": "20251010213654_platforms table.cs",
               "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Data\\Migrations\\20251010213654_platforms table.cs",
               "RelativeDocumentMoniker": "GamesPlatform\\Data\\Migrations\\20251010213654_platforms table.cs",
@@ -584,7 +644,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 33,
               "Title": "Platform.cs",
               "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Models\\Platform.cs",
               "RelativeDocumentMoniker": "GamesPlatform\\Models\\Platform.cs",
@@ -596,7 +656,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 38,
               "Title": "Library.cs",
               "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Models\\Library.cs",
               "RelativeDocumentMoniker": "GamesPlatform\\Models\\Library.cs",
@@ -608,19 +668,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "Rating.cs",
-              "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Models\\Rating.cs",
-              "RelativeDocumentMoniker": "GamesPlatform\\Models\\Rating.cs",
-              "ToolTip": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Models\\Rating.cs",
-              "RelativeToolTip": "GamesPlatform\\Models\\Rating.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAswBYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-10T19:53:10.641Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 35,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\appsettings.json",
               "RelativeDocumentMoniker": "GamesPlatform\\appsettings.json",
@@ -632,7 +680,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 36,
               "Title": "20251010213905_init.cs",
               "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Migrations\\20251010213905_init.cs",
               "RelativeDocumentMoniker": "GamesPlatform\\Migrations\\20251010213905_init.cs",
@@ -644,7 +692,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 39,
               "Title": "ErrorViewModel.cs",
               "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Models\\ErrorViewModel.cs",
               "RelativeDocumentMoniker": "GamesPlatform\\Models\\ErrorViewModel.cs",
@@ -656,19 +704,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Data\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "GamesPlatform\\Data\\ApplicationDbContext.cs",
-              "ToolTip": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Data\\ApplicationDbContext.cs",
-              "RelativeToolTip": "GamesPlatform\\Data\\ApplicationDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-10T19:34:27.743Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 40,
               "Title": "Status.cs",
               "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Enums\\Status.cs",
               "RelativeDocumentMoniker": "GamesPlatform\\Enums\\Status.cs",
@@ -680,7 +716,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 41,
               "Title": "Tags.cs",
               "DocumentMoniker": "C:\\Users\\agnel\\Desktop\\praca_inzynierska\\Projekt\\Community-driven-portal-for-video-game-reviews-and-ratings\\GamesPlatform\\GamesPlatform\\Enums\\Tags.cs",
               "RelativeDocumentMoniker": "GamesPlatform\\Enums\\Tags.cs",

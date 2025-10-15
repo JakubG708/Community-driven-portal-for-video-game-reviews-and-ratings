@@ -1,9 +1,9 @@
 ﻿using GamesPlatform.Enums;
-using System;
+using GamesPlatform.Models;
 
-namespace GamesPlatform.Models
+namespace GamesPlatform.DTOs
 {
-    public class Game
+    public class GameDTO
     {
         public int GameId { get; set; }
         public string Title { get; set; }
@@ -14,8 +14,11 @@ namespace GamesPlatform.Models
         public string Description { get; set; }
         public string? ImageUrl { get; set; }
         public string? ThumbNailUrl { get; set; }
-        public ICollection<Review> Reviews { get; set; } = new List<Review>();
-        public ICollection<Rating> Ratings { get; set; } = new List<Rating>();
-        public ICollection<Platform> Platforms { get; set; } = new List<Platform>();
-    }
+        public int AvgGameplayRating { get; set; }
+        public int AvgGraphicsRating { get; set; }
+        public int AvgOptimizationRating { get; set; }
+        public int AvgStoryRating { get; set; }
+        public List<Review> Reviews { get; set; }
+        public List<Platform> Platforms { get; set; }
+        }
 }

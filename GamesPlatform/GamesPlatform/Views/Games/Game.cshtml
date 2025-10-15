@@ -1,0 +1,61 @@
+﻿@model GamesPlatform.DTOs.GameDTO
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="container mt-4">
+    <h1 class="display-5">@Model.Title</h1>
+
+    <div class="row mt-3">
+        <div class="col-md-4">
+            <img src="@Model.ImageUrl" alt="@Model.Title" class="img-fluid rounded shadow-sm" />
+        </div>
+
+        <div class="col-md-8">
+            <p><strong>Tag:</strong> @Model.Tag</p>
+            <p><strong>Developer:</strong> @Model.Developer</p>
+            <p><strong>Publisher:</strong> @Model.Publisher</p>
+            <p><strong>Release year:</strong> @Model.ReleaseYear.ToString("yyyy")</p>
+
+            <p><strong>Description:</strong></p>
+            <p>@Model.Description</p>
+
+            <h4 class="mt-4">Average Ratings</h4>
+            <ul class="list-group">
+                <li class="list-group-item">Gameplay: @Model.AvgGameplayRating / 10</li>
+                <li class="list-group-item">Graphics: @Model.AvgGraphicsRating / 10</li>
+                <li class="list-group-item">Optimization: @Model.AvgOptimizationRating / 10</li>
+                <li class="list-group-item">Story: @Model.AvgStoryRating / 10</li>
+            </ul>
+
+            <h4 class="mt-4">Available on Platforms</h4>
+            <ul>
+                @foreach (var platform in Model.Platforms)
+                {
+                    <li>@platform.PlatformName</li>
+                }
+            </ul>
+        </div>
+    </div>
+
+    <hr class="my-4" />
+
+    <h3>User Reviews</h3>
+    @if (Model.Reviews != null && Model.Reviews.Any())
+    {
+        foreach (var review in Model.Reviews)
+        {
+            <div class="card my-3 shadow-sm">
+                <div class="card-body">
+                    <p class="card-text">@review.Description</p>
+                    <small class="text-muted">//tutaj ma być username By user: @review.UserId</small>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <p>No reviews yet.</p>
+    }
+</div>
