@@ -17,7 +17,7 @@ namespace GamesPlatform.Services.Games
 
         public async Task<GameDTO> GetGameByIdAsync(int id)
         {
-            using var db = dbFactory.CreateDbContext();
+            using var db = await dbFactory.CreateDbContextAsync();
 
             var game = await db.Games.Include(x => x.Reviews).Include(x => x.Ratings).Include(x=>x.Platforms).FirstOrDefaultAsync(x=>x.GameId == id);
             var gameDTO = new GameDTO
@@ -44,7 +44,7 @@ namespace GamesPlatform.Services.Games
 
         public async Task<ICollection<Game>> GetGamesAsync()
         {
-            using var db = dbFactory.CreateDbContext();
+            using var db =await dbFactory.CreateDbContextAsync();
 
             var games = await db.Games.ToListAsync<Game>();
 
