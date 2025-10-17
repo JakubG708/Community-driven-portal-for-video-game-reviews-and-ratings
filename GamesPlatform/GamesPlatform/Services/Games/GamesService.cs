@@ -15,6 +15,28 @@ namespace GamesPlatform.Services.Games
             this.dbFactory = dbFactory;
         }
 
+        public async Task EditGameAsync(int id, GameDTO gameDTO)
+        {
+            using var db = await dbFactory.CreateDbContextAsync();
+            var game = await db.Games.FirstOrDefaultAsync(x => x.GameId == id);
+            if (game != null)
+            {
+                game.Title = gameDTO.Title;
+                game.Tag = gameDTO.Tag;
+                game.ReleaseYear = gameDTO.ReleaseYear;
+                game.Developer = gameDTO.Developer;
+                game.Publisher = gameDTO.Publisher;
+                game.Description = gameDTO.Description;
+                game.ImageUrl = gameDTO.ImageUrl;
+                game.ThumbNailUrl = gameDTO.ThumbNailUrl;
+                await db.SaveChangesAsync();
+            }
+            else
+            {
+                throw new Exception("Game not found");
+            }
+        }
+
         public async Task<GameDTO> GetGameByIdAsync(int id)
         {
             using var db = await dbFactory.CreateDbContextAsync();
