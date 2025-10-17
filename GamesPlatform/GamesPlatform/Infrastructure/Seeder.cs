@@ -118,12 +118,23 @@ namespace GamesPlatform.Infrastructure
                 var library = new GamesPlatform.Models.Library
                 {
                     UserId = user.Id,
-                    GameId = firstGame.GameId,
-                    Status = Enums.Status.Completed,
-                    AddedAt = DateTime.UtcNow
+                   
                 };
                 await dbContext.Libraries.AddAsync(library);
                 await dbContext.SaveChangesAsync();
+            }
+
+            var firstLib = await dbContext.Libraries.FirstAsync();
+
+            if (!dbContext.LibGames.Any())
+            {
+                var LibGame = new GamesPlatform.Models.LibGame
+                {
+                    LibraryId = firstLib.LibraryId,
+                    GameId = firstGame.GameId,
+                    Status = Status.Completed,
+                    AddedAt = DateTime.Now,
+                };
             }
         }
     }
