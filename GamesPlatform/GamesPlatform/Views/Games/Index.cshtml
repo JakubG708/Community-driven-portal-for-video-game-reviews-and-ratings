@@ -1,22 +1,60 @@
-﻿
-<div class="row">
-    <div class="col-md-8 offset-md-2">
-        <table>
-            <thead></thead>
-            <tbody>
-                @foreach (var game in Model)
-                {
-                    <tr>
-                        <td>
-                            <a asp-action="Game" asp-route-id="@game.GameId">@game.Title</a>
-                        </td>
-                        <td>
-                            - @game.Description
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+﻿@model IEnumerable<GamesPlatform.Models.Game>
 
-    </div>
+@{
+    ViewData["Title"] = "All Games";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">All Games</h2>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info text-center">
+            No games found in the database.
+        </div>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table table-striped table-hover align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Title</th>
+                        <th>Tag</th>
+                        <th>Release Year</th>
+                        <th>Developer</th>
+                        <th>Publisher</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var game in Model)
+                    {
+                        <tr>
+                            <td>
+                                <a asp-action="Game" asp-route-id="@game.GameId" class="text-decoration-none fw-bold">
+                                    @game.Title
+                                </a>
+                            </td>
+                            <td>@game.Tag</td>
+                            <td>@game.ReleaseYear.ToString("yyyy")</td>
+                            <td>@game.Developer</td>
+                            <td>@game.Publisher</td>
+                            <td class="text-end">
+                                <a asp-action="Game" asp-route-id="@game.GameId" class="btn btn-sm btn-primary">
+                                    View
+                                </a>
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <a asp-action="Edit" asp-route-id="@game.GameId" class="btn btn-sm btn-outline-secondary ms-2">
+                                        Edit
+                                    </a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
 </div>

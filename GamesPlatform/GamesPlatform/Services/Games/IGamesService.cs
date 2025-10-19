@@ -7,6 +7,7 @@ namespace GamesPlatform.Services.Games
     {
         Task<ICollection<Game>> GetGamesAsync();
         Task<GameDTO> GetGameByIdAsync(int id);
-        Task EditGameAsync(int id, GameDTO gameDTO);
+        Task EditGameAsync(int id, EditGameDTO gameDTO);
+        Task AddGameAsync(GameDTO gameDTO);
     }
 }

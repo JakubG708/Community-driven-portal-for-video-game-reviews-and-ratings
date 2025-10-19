@@ -15,27 +15,54 @@ namespace GamesPlatform.Services.Games
             this.dbFactory = dbFactory;
         }
 
-        public async Task EditGameAsync(int id, GameDTO gameDTO)
+        public async Task AddGameAsync(GameDTO gameDTO)
         {
             using var db = await dbFactory.CreateDbContextAsync();
-            var game = await db.Games.FirstOrDefaultAsync(x => x.GameId == id);
-            if (game != null)
+            var game = new Game
             {
-                game.Title = gameDTO.Title;
-                game.Tag = gameDTO.Tag;
-                game.ReleaseYear = gameDTO.ReleaseYear;
-                game.Developer = gameDTO.Developer;
-                game.Publisher = gameDTO.Publisher;
-                game.Description = gameDTO.Description;
-                game.ImageUrl = gameDTO.ImageUrl;
-                game.ThumbNailUrl = gameDTO.ThumbNailUrl;
-                await db.SaveChangesAsync();
-            }
-            else
-            {
-                throw new Exception("Game not found");
-            }
+                Title = gameDTO.Title,
+                Tag = gameDTO.Tag,
+                ReleaseYear = gameDTO.ReleaseYear,
+                Developer = gameDTO.Developer,
+                Publisher = gameDTO.Publisher,
+                Description = gameDTO.Description,
+                ImageUrl = gameDTO.ImageUrl,
+                ThumbNailUrl = gameDTO.ThumbNailUrl,
+            };
+            db.Games.Add(game);
+
+            throw new NotImplementedException();
         }
+
+        public async Task EditGameAsync(int id, EditGameDTO gameDTO)
+        {
+            using var db = await dbFactory.CreateDbContextAsync();
+            var game = await db.Games.Include(g => g.Platforms).FirstOrDefaultAsync(g => g.GameId == id);
+
+            if (game == null) throw new Exception("Game not found");
+
+            game.Title = gameDTO.Title;
+            game.Tag = gameDTO.Tag;
+            game.ReleaseYear = gameDTO.ReleaseYear;
+            game.Developer = gameDTO.Developer;
+            game.Publisher = gameDTO.Publisher;
+            game.Description = gameDTO.Description;
+            game.ImageUrl = gameDTO.ImageUrl;
+            game.ThumbNailUrl = gameDTO.ThumbNailUrl;
+
+            // Usuń stare platformy i dodaj wybrane
+            game.Platforms.Clear();
+            var selectedPlatforms = await db.Platforms
+                                           .Where(p => gameDTO.SelectedPlatformIds.Contains(p.PlatformId))
+                                           .ToListAsync();
+            foreach (var p in selectedPlatforms)
+            {
+                game.Platforms.Add(p);
+            }
+
+            await db.SaveChangesAsync();
+        }
+
 
         public async Task<GameDTO> GetGameByIdAsync(int id)
         {
