@@ -1,4 +1,5 @@
-﻿using GamesPlatform.Models;
+﻿using GamesPlatform.DTOs;
+using GamesPlatform.Models;
 
 namespace GamesPlatform.Services.Reviews
 {
@@ -9,6 +10,7 @@ namespace GamesPlatform.Services.Reviews
         Task DeleteReviewAsync(int reviewId);
         Task<ICollection<Review>> GetReviewsAsync();
         Task<Review> GetReviewByIdAsync(int reviewId);
+        Task<ICollection<ReviewDTO>> GetReviewDTOsAsync();
 
     }
 }

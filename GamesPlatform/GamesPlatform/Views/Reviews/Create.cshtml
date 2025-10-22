@@ -1,0 +1,41 @@
+﻿@model GamesPlatform.Models.Review
+
+@{
+    ViewData["Title"] = "Create Review";
+}
+
+<h1>Create Review</h1>
+
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    @if (ViewBag.IsGameFixed == true)
+    {
+        <div class="mb-3">
+            <label class="form-label">Game</label>
+            <input type="text" class="form-control" value="@ViewBag.SelectedGameTitle" readonly />
+            <input type="hidden" name="gameId" value="@ViewBag.SelectedGameId" />
+        </div>
+    }
+    else
+    {
+        <div class="mb-3">
+            <label for="gameId" class="form-label">Game</label>
+            <select class="form-select" id="gameId" name="gameId" asp-items="ViewBag.Games">
+                <option value="">-- Select game --</option>
+            </select>
+        </div>
+    }
+
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" id="description" name="description" rows="5" required>@Model?.Description</textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+    <a class="btn btn-link" asp-action="Index">Back to List</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

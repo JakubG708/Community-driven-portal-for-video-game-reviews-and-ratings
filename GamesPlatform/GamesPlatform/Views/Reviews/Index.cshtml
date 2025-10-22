@@ -1,1 +1,37 @@
-﻿<p>reviews controller</p>
+﻿@model IEnumerable<GamesPlatform.DTOs.ReviewDTO>
+
+@{
+    ViewData["Title"] = "Reviews";
+}
+
+<h1>Reviews</h1>
+
+<p>
+    <a class="btn btn-primary" asp-controller="Reviews" asp-action="Create">Create New Review</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Game</th>
+            <th>User</th>
+            <th>Description</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.GameTitle</td>
+            <td>@item.UserName</td>
+            <td>@(item.Description?.Length > 100 ? item.Description.Substring(0, 100) + "…" : item.Description)</td>
+            <td>
+                <a asp-controller="Reviews" asp-action="Details" asp-route-id="@item.ReviewId">Details</a> |
+                <a asp-controller="Reviews" asp-action="Edit" asp-route-id="@item.ReviewId">Edit</a> |
+                <a asp-controller="Reviews" asp-action="Delete" asp-route-id="@item.ReviewId">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

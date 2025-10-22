@@ -1,4 +1,5 @@
 ﻿using GamesPlatform.Data;
+using GamesPlatform.DTOs;
 using GamesPlatform.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,6 +13,7 @@ namespace GamesPlatform.Services.Reviews
         {
             this.dbFactory = dbFactory;
         }
+
         public async Task AddReviewAsync(int gameId, string userId, string content)
         {
             using var db = await dbFactory.CreateDbContextAsync();
@@ -35,7 +37,6 @@ namespace GamesPlatform.Services.Reviews
             }
             db.Reviews.Remove(review);
             await db.SaveChangesAsync();
-
         }
 
         public async Task EditReviewAsync(int reviewId, string content)
@@ -53,26 +54,46 @@ namespace GamesPlatform.Services.Reviews
 
         public async Task<Review> GetReviewByIdAsync(int reviewId)
         {
-            using var db =await dbFactory.CreateDbContextAsync();
-            var review = await db.Reviews.FirstOrDefaultAsync(r => r.ReviewId == reviewId);
+            using var db = await dbFactory.CreateDbContextAsync();
+
+            var review = await db.Reviews
+                .Include(r => r.Game)
+                .Include(r => r.User)
+                .FirstOrDefaultAsync(r => r.ReviewId == reviewId);
+
             if (review == null)
             {
                 throw new Exception("Review not found");
             }
-            else
-            {
-                return review;
-            }
-            
+
+            return review;
+        }
+
+        public async Task<ICollection<ReviewDTO>> GetReviewDTOsAsync()
+        {
+            using var db = await dbFactory.CreateDbContextAsync();
+
+            var reviews = await db.Reviews
+                .Include(r => r.Game)
+                .Include(r => r.User)
+                .Select(r => new ReviewDTO
+                {
+                    ReviewId = r.ReviewId,
+                    UserId = r.UserId,
+                    UserName = r.User != null ? r.User.UserName : r.UserId,
+                    GameId = r.GameId,
+                    GameTitle = r.Game != null ? r.Game.Title : $"GameId: {r.GameId}",
+                    Description = r.Description
+                })
+                .ToListAsync();
+
+            return reviews;
         }
 
         public async Task<ICollection<Review>> GetReviewsAsync()
         {
-
             using var db = await dbFactory.CreateDbContextAsync();
-
             var reviews = await db.Reviews.ToListAsync<Review>();
-
             return reviews;
         }
     }

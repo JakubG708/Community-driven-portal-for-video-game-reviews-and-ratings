@@ -3,6 +3,7 @@ using GamesPlatform.DTOs;
 using GamesPlatform.Enums;
 using GamesPlatform.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace GamesPlatform.Services.Games
 {
@@ -68,7 +69,15 @@ namespace GamesPlatform.Services.Games
         {
             using var db = await dbFactory.CreateDbContextAsync();
 
-            var game = await db.Games.Include(x => x.Reviews).Include(x => x.Ratings).Include(x=>x.Platforms).FirstOrDefaultAsync(x=>x.GameId == id);
+            var game = await db.Games
+                               .Include(x => x.Reviews)
+                                   .ThenInclude(r => r.User)
+                               .Include(x => x.Ratings)
+                               .Include(x => x.Platforms)
+                               .FirstOrDefaultAsync(x => x.GameId == id);
+
+            if (game == null) throw new Exception("Game not found");
+
             var gameDTO = new GameDTO
             {
                 GameId = game.GameId,
