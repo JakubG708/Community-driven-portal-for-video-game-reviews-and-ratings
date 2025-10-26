@@ -5,6 +5,7 @@ using GamesPlatform.Services.Libraries;
 using GamesPlatform.Services.Platforms;
 using GamesPlatform.Services.Ratings;
 using GamesPlatform.Services.Reviews;
+using GamesPlatform.Services.Users;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -36,6 +37,7 @@ builder.Services.AddScoped<IPlatformService, PlatformService>();
 builder.Services.AddScoped<IRatingService, RatingService>();
 builder.Services.AddScoped<ILIbraryService, LibraryService>();
 builder.Services.AddScoped<IReviewsService, ReviewsService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 var app = builder.Build();
 

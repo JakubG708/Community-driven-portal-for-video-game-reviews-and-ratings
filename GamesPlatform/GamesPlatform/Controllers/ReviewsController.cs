@@ -20,7 +20,6 @@ namespace GamesPlatform.Controllers
             this.gamesService = gamesService;
         }
 
-        // GET: /Reviews
         [HttpGet]
         public async Task<IActionResult> Index()
         {
@@ -28,7 +27,6 @@ namespace GamesPlatform.Controllers
             return View(reviews);
         }
 
-        // GET: /Reviews/Details/5
         [HttpGet]
         public async Task<IActionResult> Details(int id)
         {
@@ -43,7 +41,6 @@ namespace GamesPlatform.Controllers
             }
         }
 
-        // GET: /Reviews/Create
         [HttpGet]
         public async Task<IActionResult> Create(int? gameId)
         {
@@ -62,7 +59,6 @@ namespace GamesPlatform.Controllers
             return View();
         }
 
-        // POST: /Reviews/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(int gameId, string description)
@@ -88,7 +84,6 @@ namespace GamesPlatform.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // GET: /Reviews/Edit/5
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
@@ -110,7 +105,6 @@ namespace GamesPlatform.Controllers
             }
         }
 
-        // POST: /Reviews/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, string description)
@@ -141,7 +135,6 @@ namespace GamesPlatform.Controllers
             }
         }
 
-        // GET: /Reviews/Delete/5
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
@@ -165,7 +158,6 @@ namespace GamesPlatform.Controllers
             }
         }
 
-        // POST: /Reviews/DeleteConfirmed/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

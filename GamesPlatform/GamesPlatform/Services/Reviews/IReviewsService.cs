@@ -11,6 +11,7 @@ namespace GamesPlatform.Services.Reviews
         Task<ICollection<Review>> GetReviewsAsync();
         Task<Review> GetReviewByIdAsync(int reviewId);
         Task<ICollection<ReviewDTO>> GetReviewDTOsAsync();
+        Task<ICollection<Review>> GetUserReviewsAsync(string userId);
 
     }
 }

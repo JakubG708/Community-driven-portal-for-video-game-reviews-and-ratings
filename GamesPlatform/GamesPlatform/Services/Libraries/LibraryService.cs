@@ -42,6 +42,37 @@ namespace GamesPlatform.Services.Libraries
             await db.SaveChangesAsync();
         }
 
+        public async Task CreateLibraryAsync(string userId)
+        {
+            using var db = await dbFactory.CreateDbContextAsync();
+
+            var existingLibrary = await db.Libraries.Where(x => x.UserId == userId).FirstOrDefaultAsync();
+            if (existingLibrary != null)
+            {
+                throw new InvalidOperationException($"Library already exists for user with ID: {userId}");
+            }
+            var library = new Library
+            {
+                UserId = userId,
+                LibGames = new List<LibGame>()
+            };
+
+            db.Libraries.Add(library);
+            await db.SaveChangesAsync();
+        }
+
+        public async Task<int> GetLibraryId(string userId)
+        {
+            using var db = await dbFactory.CreateDbContextAsync();
+            var library = await db.Libraries.FirstOrDefaultAsync(x => x.UserId == userId);
+            if (library == null)
+            {
+                throw new InvalidOperationException($"Library not found for user with ID: {userId}");
+            }
+            return library.LibraryId;
+
+        }
+
         public async Task<ICollection<LibGame>> GetUserLibraryAsync(string userId)
         {
             using var db = await dbFactory.CreateDbContextAsync();
