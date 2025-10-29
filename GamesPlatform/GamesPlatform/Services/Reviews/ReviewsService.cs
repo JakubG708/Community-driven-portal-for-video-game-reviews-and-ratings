@@ -100,7 +100,11 @@ namespace GamesPlatform.Services.Reviews
         public async Task<ICollection<Review>> GetUserReviewsAsync(string userId)
         {
             using var db = await dbFactory.CreateDbContextAsync();
-            var reviews = await db.Reviews.Where(r => r.UserId == userId).ToListAsync<Review>();
+            var reviews = await db.Reviews
+                .Where(r => r.UserId == userId)
+                .Include(r => r.Game)
+                .Include(r => r.User)
+                .ToListAsync();
             return reviews;
         }
     }

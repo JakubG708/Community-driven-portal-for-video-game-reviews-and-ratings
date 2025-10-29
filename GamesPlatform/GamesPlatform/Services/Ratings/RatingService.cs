@@ -13,6 +13,7 @@ namespace GamesPlatform.Services.Ratings
         {
             this.dbFactory = dbFactory;
         }
+
         public async Task AddRatingAsync(int gameId, string userId, RatingDTO rating)
         {
             using var db = await dbFactory.CreateDbContextAsync();
@@ -85,8 +86,11 @@ namespace GamesPlatform.Services.Ratings
 
         public async Task<ICollection<Rating>> GetUserRatingsAsync(string userId)
         {
-            using var db = dbFactory.CreateDbContext();
-            var ratings = await db.Ratings.Where(r => r.UserId == userId).ToListAsync();
+            using var db = await dbFactory.CreateDbContextAsync();
+            var ratings = await db.Ratings
+                                  .Where(r => r.UserId == userId)
+                                  .Include(r => r.Game)
+                                  .ToListAsync();
             return ratings;
         }
     }

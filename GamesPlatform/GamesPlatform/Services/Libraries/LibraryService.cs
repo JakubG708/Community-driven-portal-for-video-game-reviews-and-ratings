@@ -22,7 +22,16 @@ namespace GamesPlatform.Services.Libraries
                 throw new Exception("Game not found");
             }
 
-            var library = await db.Libraries.Where(x=> x.UserId == userId).Include(x => x.LibGames).FirstOrDefaultAsync();
+            var library = await db.Libraries
+                                  .Where(x => x.UserId == userId)
+                                  .Include(x => x.LibGames)
+                                      .ThenInclude(lg => lg.Game)
+                                  .FirstOrDefaultAsync();
+
+            if (library == null)
+            {
+                throw new InvalidOperationException($"Library not found for user with ID: {userId}");
+            }
 
             if (library.LibGames.FirstOrDefault(x => x.GameId == game.GameId) != null)
             {
@@ -35,7 +44,6 @@ namespace GamesPlatform.Services.Libraries
                 GameId = game.GameId,
                 Status = status,
                 AddedAt = DateTime.UtcNow,
-
             };
 
             db.Add(libGame);
@@ -76,7 +84,11 @@ namespace GamesPlatform.Services.Libraries
         public async Task<ICollection<LibGame>> GetUserLibraryAsync(string userId)
         {
             using var db = await dbFactory.CreateDbContextAsync();
-            var library = await db.Libraries.Where(x => x.UserId == userId).Include(x => x.LibGames).FirstOrDefaultAsync();
+            var library = await db.Libraries
+                                  .Where(x => x.UserId == userId)
+                                  .Include(x => x.LibGames)
+                                      .ThenInclude(lg => lg.Game)
+                                  .FirstOrDefaultAsync();
 
             if (library == null)
             {
@@ -89,7 +101,11 @@ namespace GamesPlatform.Services.Libraries
         public async Task RemoveGameFromLibraryAsync(string userId, int gameId)
         {
             using var db = await dbFactory.CreateDbContextAsync();
-            var library = await db.Libraries.Where(x => x.UserId == userId).Include(x => x.LibGames).FirstOrDefaultAsync();
+            var library = await db.Libraries
+                                  .Where(x => x.UserId == userId)
+                                  .Include(x => x.LibGames)
+                                      .ThenInclude(lg => lg.Game)
+                                  .FirstOrDefaultAsync();
             
             if (library == null)
             {
