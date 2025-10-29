@@ -1,9 +1,11 @@
-﻿using GamesPlatform.DTOs;
+﻿using System.Security.Claims;
+using GamesPlatform.DTOs;
 using GamesPlatform.Models;
 using GamesPlatform.Services.Libraries;
 using GamesPlatform.Services.Ratings;
 using GamesPlatform.Services.Reviews;
 using GamesPlatform.Services.Users;
+using GamesPlatform.Enums;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GamesPlatform.Controllers
@@ -58,9 +60,30 @@ namespace GamesPlatform.Controllers
             {
                 return View(nameof(Index));
             }
-            
+        }
 
-            
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddToLibrary(int gameId, Status status = Status.InProgress, string userId = null)
+        {
+            if (string.IsNullOrEmpty(userId))
+            {
+                userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                if (string.IsNullOrEmpty(userId))
+                    return Forbid();
+            }
+
+            try
+            {
+                await lIbraryService.AddGameToLibraryAsync(userId, gameId, status);
+                TempData["Success"] = "Gra dodana do biblioteki.";
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = ex.Message;
+            }
+
+            return RedirectToAction(nameof(Details), new { id = userId });
         }
     }
 }

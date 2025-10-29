@@ -23,16 +23,17 @@ namespace GamesPlatform.Services.Games
             {
                 Title = gameDTO.Title,
                 Tag = gameDTO.Tag,
-                ReleaseYear = gameDTO.ReleaseYear,
+                ReleaseYear = DateTime.SpecifyKind(gameDTO.ReleaseYear, DateTimeKind.Utc),
                 Developer = gameDTO.Developer,
                 Publisher = gameDTO.Publisher,
                 Description = gameDTO.Description,
                 ImageUrl = gameDTO.ImageUrl,
                 ThumbNailUrl = gameDTO.ThumbNailUrl,
+                Platforms = new List<Platform>()
             };
-            db.Games.Add(game);
 
-            throw new NotImplementedException();
+            db.Games.Add(game);
+            await db.SaveChangesAsync();
         }
 
         public async Task EditGameAsync(int id, EditGameDTO gameDTO)
@@ -44,14 +45,13 @@ namespace GamesPlatform.Services.Games
 
             game.Title = gameDTO.Title;
             game.Tag = gameDTO.Tag;
-            game.ReleaseYear = gameDTO.ReleaseYear;
+            game.ReleaseYear = DateTime.SpecifyKind(gameDTO.ReleaseYear, DateTimeKind.Utc);
             game.Developer = gameDTO.Developer;
             game.Publisher = gameDTO.Publisher;
             game.Description = gameDTO.Description;
             game.ImageUrl = gameDTO.ImageUrl;
             game.ThumbNailUrl = gameDTO.ThumbNailUrl;
 
-            // Usuń stare platformy i dodaj wybrane
             game.Platforms.Clear();
             var selectedPlatforms = await db.Platforms
                                            .Where(p => gameDTO.SelectedPlatformIds.Contains(p.PlatformId))
@@ -63,7 +63,6 @@ namespace GamesPlatform.Services.Games
 
             await db.SaveChangesAsync();
         }
-
 
         public async Task<GameDTO> GetGameByIdAsync(int id)
         {

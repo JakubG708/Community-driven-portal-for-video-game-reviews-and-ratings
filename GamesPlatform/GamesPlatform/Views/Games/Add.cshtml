@@ -1,0 +1,78 @@
+﻿@model GamesPlatform.DTOs.GameDTO
+
+@{
+    ViewData["Title"] = "Add Game";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">Add New Game</h2>
+
+    <form asp-action="Add" method="post" class="needs-validation" novalidate>
+        @Html.AntiForgeryToken()
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label asp-for="Title" class="form-label fw-bold"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-6">
+                <label asp-for="Tag" class="form-label fw-bold"></label>
+                <select asp-for="Tag" class="form-select" asp-items="Html.GetEnumSelectList<GamesPlatform.Enums.Tags>()"></select>
+                <span asp-validation-for="Tag" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label asp-for="ReleaseYear" class="form-label fw-bold"></label>
+                
+                <input asp-for="ReleaseYear" type="date" class="form-control" />
+                <span asp-validation-for="ReleaseYear" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-6">
+                <label asp-for="Developer" class="form-label fw-bold"></label>
+                <input asp-for="Developer" class="form-control" />
+                <span asp-validation-for="Developer" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label asp-for="Publisher" class="form-label fw-bold"></label>
+                <input asp-for="Publisher" class="form-control" />
+                <span asp-validation-for="Publisher" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-6">
+                <label asp-for="ImageUrl" class="form-label fw-bold"></label>
+                <input asp-for="ImageUrl" class="form-control" placeholder="Full image URL" />
+                <span asp-validation-for="ImageUrl" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="ThumbNailUrl" class="form-label fw-bold"></label>
+            <input asp-for="ThumbNailUrl" class="form-control" placeholder="Thumbnail URL" />
+            <span asp-validation-for="ThumbNailUrl" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label fw-bold"></label>
+            <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-success px-4 me-2">Create</button>
+            <a asp-action="Index" class="btn btn-secondary px-4">Back to List</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

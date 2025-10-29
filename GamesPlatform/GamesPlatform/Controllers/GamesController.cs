@@ -30,6 +30,7 @@ namespace GamesPlatform.Controllers
 
             return View(game);
         }
+
         [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
@@ -74,13 +75,17 @@ namespace GamesPlatform.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
         public async Task<IActionResult> Add()
         {
-            var game = new GameDTO();
+            var game = new GameDTO { ReleaseYear = DateTime.UtcNow };
             return View(game);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Add(GameDTO gameDTO)
         {
             if (!ModelState.IsValid)
@@ -89,7 +94,5 @@ namespace GamesPlatform.Controllers
             await gamesService.AddGameAsync(gameDTO);
             return RedirectToAction(nameof(Index));
         }
-
-
     }
 }

@@ -120,6 +120,21 @@ namespace GamesPlatform.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
+                
+                var existingByEmail = await _userManager.FindByEmailAsync(Input.Email);
+                if (existingByEmail != null)
+                {
+                    ModelState.AddModelError("Input.Email", "Ten adres e-mail jest już używany.");
+                    return Page();
+                }
+
+                var existingByName = await _userManager.FindByNameAsync(Input.UserName);
+                if (existingByName != null)
+                {
+                    ModelState.AddModelError("Input.UserName", "Ta nazwa użytkownika jest już zajęta.");
+                    return Page();
+                }
+
                 var user = CreateUser();
 
                 await _userStore.SetUserNameAsync(user, Input.UserName, CancellationToken.None);
@@ -143,6 +158,7 @@ namespace GamesPlatform.Areas.Identity.Pages.Account
 
                  //   await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
                   //      $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
@@ -184,7 +200,7 @@ namespace GamesPlatform.Areas.Identity.Pages.Account
             {
                 throw new NotSupportedException("The default UI requires a user store with email support.");
             }
-            return (IUserEmailStore<IdentityUser>)_userStore;
+            return (IUserEmailStore<IdentityUser>)_userStore;   
         }
     }
 }
