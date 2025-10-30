@@ -32,6 +32,16 @@ namespace GamesPlatform.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> Details(int id)
+        {
+            var review = await reviewsService.GetReviewByIdAsync(id);
+            if (review == null)
+                return NotFound();
+
+            return View(review);
+        }
+
+        [HttpGet]
         public async Task<IActionResult> Create(int? gameId)
         {
             var games = await gamesService.GetGamesAsync();
