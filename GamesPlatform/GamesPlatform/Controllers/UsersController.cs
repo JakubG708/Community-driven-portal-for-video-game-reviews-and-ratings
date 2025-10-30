@@ -85,5 +85,35 @@ namespace GamesPlatform.Controllers
 
             return RedirectToAction(nameof(Details), new { id = userId });
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RemoveFromLibrary(int gameId, string userId = null)
+        {
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userId))
+            {
+                if (string.IsNullOrEmpty(currentUserId))
+                    return Forbid();
+                userId = currentUserId;
+            }
+            else
+            {
+                if (userId != currentUserId && !User.IsInRole("Admin"))
+                    return Forbid();
+            }
+
+            try
+            {
+                await lIbraryService.RemoveGameFromLibraryAsync(userId, gameId);
+                TempData["Success"] = "Gra została usunięta z biblioteki.";
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = ex.Message;
+            }
+
+            return RedirectToAction(nameof(Details), new { id = userId });
+        }
     }
 }
