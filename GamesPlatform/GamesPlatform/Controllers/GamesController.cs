@@ -24,10 +24,32 @@ namespace GamesPlatform.Controllers
             this.lIbraryService = lIbraryService;
         }
 
-        public async Task<IActionResult> Index()
+        // dodano parametry q (query) i by (title/developer/publisher)
+        public async Task<IActionResult> Index(string q = null, string by = "title")
         {
-            var games = await gamesService.GetGamesAsync();
-            return View(games);
+            var games = await gamesService.GetGamesAsync(); // pobierz wszystkie (serwis)
+            var list = games.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(q))
+            {
+                var qq = q.Trim();
+                switch ((by ?? "title").ToLowerInvariant())
+                {
+                    case "developer":
+                        list = list.Where(g => (g.Developer ?? "").IndexOf(qq, StringComparison.OrdinalIgnoreCase) >= 0);
+                        break;
+                    case "publisher":
+                        list = list.Where(g => (g.Publisher ?? "").IndexOf(qq, StringComparison.OrdinalIgnoreCase) >= 0);
+                        break;
+                    default:
+                        list = list.Where(g => (g.Title ?? "").IndexOf(qq, StringComparison.OrdinalIgnoreCase) >= 0);
+                        break;
+                }
+            }
+
+            ViewBag.SearchQuery = q;
+            ViewBag.FilterBy = by;
+            return View(list.ToList());
         }
 
         public async Task<IActionResult> Game(int id)
