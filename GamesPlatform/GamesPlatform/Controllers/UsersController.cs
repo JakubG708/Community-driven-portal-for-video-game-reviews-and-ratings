@@ -7,6 +7,7 @@ using GamesPlatform.Services.Reviews;
 using GamesPlatform.Services.Users;
 using GamesPlatform.Enums;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace GamesPlatform.Controllers
 {
@@ -16,13 +17,15 @@ namespace GamesPlatform.Controllers
         private readonly ILIbraryService lIbraryService;
         private readonly IReviewsService reviewsService;
         private readonly IRatingService ratingService;
+        private readonly ILogger<UsersController> _logger;
 
-        public UsersController(IUserService userService, ILIbraryService lIbraryService, IReviewsService reviewsService, IRatingService ratingService)
+        public UsersController(IUserService userService, ILIbraryService lIbraryService, IReviewsService reviewsService, IRatingService ratingService, ILogger<UsersController> logger)
         {
             this.userService = userService;
             this.lIbraryService = lIbraryService;
             this.reviewsService = reviewsService;
             this.ratingService = ratingService;
+            _logger = logger;
         }
         public async Task<IActionResult> Index()
         {
@@ -56,7 +59,7 @@ namespace GamesPlatform.Controllers
 
                 return View(userDetails);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return View(nameof(Index));
             }
@@ -64,11 +67,11 @@ namespace GamesPlatform.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddToLibrary(int gameId, Status status = Status.InProgress, string userId = null)
+        public async Task<IActionResult> AddToLibrary(int gameId, Status status = Status.InProgress, string? userId = null)
         {
             if (string.IsNullOrEmpty(userId))
             {
-                userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                userId = User?.FindFirstValue(ClaimTypes.NameIdentifier);
                 if (string.IsNullOrEmpty(userId))
                     return Forbid();
             }
@@ -88,28 +91,39 @@ namespace GamesPlatform.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> RemoveFromLibrary(int gameId, string userId = null)
+        public async Task<IActionResult> RemoveFromLibrary(int gameId, string? userId = null)
         {
-            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            Console.WriteLine("RemoveFromLibrary called.");
+            _logger.LogInformation("RemoveFromLibrary called. gameId={GameId}, userIdParam={UserIdParam}, currentUser={CurrentUser}", gameId, userId, User?.Identity?.Name);
+
+            var currentUserId = User?.FindFirstValue(ClaimTypes.NameIdentifier);
             if (string.IsNullOrEmpty(userId))
             {
                 if (string.IsNullOrEmpty(currentUserId))
+                {
+                    _logger.LogWarning("RemoveFromLibrary forbidden: not authenticated");
                     return Forbid();
+                }
                 userId = currentUserId;
             }
             else
             {
                 if (userId != currentUserId && !User.IsInRole("Admin"))
+                {
+                    _logger.LogWarning("RemoveFromLibrary forbidden: user {User} tried to remove from {TargetUser}", currentUserId, userId);
                     return Forbid();
+                }
             }
 
             try
             {
                 await lIbraryService.RemoveGameFromLibraryAsync(userId, gameId);
                 TempData["Success"] = "Gra została usunięta z biblioteki.";
+                _logger.LogInformation("Game {GameId} removed from library of user {UserId}", gameId, userId);
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, "Failed to remove game {GameId} from user {UserId} library", gameId, userId);
                 TempData["Error"] = ex.Message;
             }
 

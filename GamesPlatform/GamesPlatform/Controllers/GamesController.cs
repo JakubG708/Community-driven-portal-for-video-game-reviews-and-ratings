@@ -78,7 +78,6 @@ namespace GamesPlatform.Controllers
                 return View(gameDTO);
             }
                 
-
             await gamesService.EditGameAsync(gameDTO.GameId, gameDTO);
             return RedirectToAction(nameof(Index));
         }

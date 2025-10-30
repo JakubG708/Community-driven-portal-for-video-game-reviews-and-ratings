@@ -7,7 +7,7 @@
     var reviews = Model.Reviews ?? Enumerable.Empty<GamesPlatform.Models.Review>();
     var ratings = Model.Ratings ?? Enumerable.Empty<GamesPlatform.Models.Rating>();
     var libGameIds = new HashSet<int>(libGames.Select(l => l.GameId));
-    var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+    var currentUserId = User?.FindFirstValue(ClaimTypes.NameIdentifier);
     var isOwnerOrAdmin = (currentUserId != null && currentUserId == Model?.Id) || User.IsInRole("Admin");
 }
 
@@ -55,11 +55,20 @@
                                 }
                                 @if (isOwnerOrAdmin)
                                 {
-                                    <form asp-controller="Users" asp-action="RemoveFromLibrary" method="post" class="mt-2" onsubmit="return confirm('Na pewno usunąć tę grę z biblioteki?');">
-                                        @Html.AntiForgeryToken()
-                                        <input type="hidden" name="gameId" value="@lg.GameId" />
-                                        <button type="submit" class="btn btn-sm btn-danger">Usuń z biblioteki</button>
-                                    </form>
+                                    @if (isOwnerOrAdmin)
+                                    {
+                                        <form asp-controller="Users" asp-action="RemoveFromLibrary"
+                                              asp-route-userId="@Model.Id"
+                                              method="post" class="mt-2"
+                                              onsubmit="return confirm('Na pewno usunąć tę grę z biblioteki?');">
+                                            @Html.AntiForgeryToken()
+                                            <input type="hidden" name="gameId" value="@lg.GameId" />
+                                            <button type="submit" class="btn btn-sm btn-danger position-relative z-3">
+                                                Usuń z biblioteki
+                                            </button>
+                                        </form>
+
+                                    }
                                 }
                             </div>
                         </div>
