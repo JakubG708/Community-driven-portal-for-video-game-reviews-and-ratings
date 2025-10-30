@@ -27,9 +27,13 @@ namespace GamesPlatform.Controllers
             this.ratingService = ratingService;
             _logger = logger;
         }
-        public async Task<IActionResult> Index()
+
+        public async Task<IActionResult> Index(string? q, string? by)
         {
-            var users = await userService.GetUsersAsync();
+            ViewBag.SearchQuery = q ?? "";
+            ViewBag.FilterBy = by ?? "username";
+
+            var users = await userService.GetUsersAsync(q, by);
             return View(users);
         }
 

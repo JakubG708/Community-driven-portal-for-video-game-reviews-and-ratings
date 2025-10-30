@@ -20,10 +20,27 @@ namespace GamesPlatform.Services.Users
             return user;
         }
 
-        public async Task<ICollection<IdentityUser>> GetUsersAsync()
+        public async Task<ICollection<IdentityUser>> GetUsersAsync(string? query = null, string? filterBy = null)
         {
             using var db = await dbFactory.CreateDbContextAsync();
-            var users = await db.Users.ToListAsync<IdentityUser>();
+            var usersQuery = db.Users.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(query))
+            {
+                var qLower = query.ToLowerInvariant();
+                var by = (filterBy ?? "username").ToLowerInvariant();
+
+                if (by == "email")
+                {
+                    usersQuery = usersQuery.Where(u => u.Email != null && u.Email.ToLower().Contains(qLower));
+                }
+                else
+                {
+                    usersQuery = usersQuery.Where(u => u.UserName != null && u.UserName.ToLower().Contains(qLower));
+                }
+            }
+
+            var users = await usersQuery.ToListAsync();
             return users;
         }
     }

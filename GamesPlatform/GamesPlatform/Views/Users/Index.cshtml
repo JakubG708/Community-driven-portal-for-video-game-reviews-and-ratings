@@ -2,6 +2,8 @@
 
 @{
     ViewData["Title"] = "Users";
+    var currentQuery = ViewBag.SearchQuery as string ?? "";
+    var currentBy = (ViewBag.FilterBy as string ?? "username").ToLowerInvariant();
 }
 
 <h1>Users</h1>
@@ -10,24 +12,47 @@
     <p>Lista zarejestrowanych użytkowników. Kliknij nazwę, aby zobaczyć szczegóły profilu.</p>
 </div>
 
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th>Username</th>
-            <th>Email</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-    @foreach (var user in Model)
-    {
-        <tr>
-            <td>@user.UserName</td>
-            <td>@user.Email</td>
-            <td>
-                <a class="btn btn-sm btn-outline-primary" asp-controller="Users" asp-action="Details" asp-route-id="@user.Id">Details</a>
-            </td>
-        </tr>
-    }
-    </tbody>
-</table>
+<div class="row mb-3">
+    <div class="col-md-8">
+        <form asp-action="Index" method="get" class="d-flex">
+            <input type="search" name="q" value="@currentQuery" class="form-control me-2" placeholder="Szukaj..." />
+            <select name="by" class="form-select me-2" style="width:220px;">
+                <option value="username" selected="@(currentBy == "username")">Login</option>
+                <option value="email" selected="@(currentBy == "email")">E-mail</option>
+            </select>
+            <button type="submit" class="btn btn-primary">Szukaj</button>
+            <a asp-action="Index" class="btn btn-outline-secondary ms-2">Wyczyść</a>
+        </form>
+    </div>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info text-center">
+        No users found in the database.
+    </div>
+}
+else
+{
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.UserName</td>
+                <td>@user.Email</td>
+                <td>
+                    <a class="btn btn-sm btn-outline-primary" asp-controller="Users" asp-action="Details" asp-route-id="@user.Id">Details</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
