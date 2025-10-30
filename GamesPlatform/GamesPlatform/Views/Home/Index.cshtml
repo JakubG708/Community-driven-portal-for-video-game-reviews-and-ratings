@@ -1,8 +1,51 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Strona główna";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="py-5 text-center">
+    <h1 class="display-4">Witaj w GamesPlatform</h1>
+    <p class="lead">Społeczność recenzji i ocen gier — przeglądaj, oceniaj i dziel się wrażeniami.</p>
+    <p>
+        <a asp-controller="Games" asp-action="Index" class="btn btn-primary btn-lg me-2">Przeglądaj gry</a>
+        <a asp-controller="Reviews" asp-action="Index" class="btn btn-outline-primary btn-lg">Zobacz recenzje</a>
+    </p>
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Dodawaj recenzje</h5>
+                <p class="card-text">Zaloguj się, dodaj grę do biblioteki i napisz opinię — pomóż innym wybrać najlepsze tytuły.</p>
+                <a asp-controller="Reviews" asp-action="Create" class="btn btn-sm btn-outline-primary">Dodaj recenzję</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Oceny i rankingi</h5>
+                <p class="card-text">Oceniaj gry i sprawdzaj rankingi, aby zobaczyć najpopularniejsze tytuły w społeczności.</p>
+                <a asp-controller="Rankings" asp-action="Index" class="btn btn-sm btn-outline-primary">Zobacz rankingi</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Społeczność</h5>
+                <p class="card-text">Przeglądaj użytkowników, odwiedzaj profile, czytaj recenzje i nawiązuj dyskusje.</p>
+                <a asp-controller="Users" asp-action="Index" class="btn btn-sm btn-outline-primary">Użytkownicy</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mb-4">
+    <h4>Kilka wskazówek</h4>
+    <ul>
+        <li>Jeśli chcesz dodać recenzję, najpierw dodaj grę do swojej biblioteki.</li>
+        <li>Użyj sekcji rankingu, aby znaleźć polecane tytuły.</li>
+        <li>Administratorzy mają dodatkowe uprawnienia do zarządzania recenzjami i grami.</li>
+    </ul>
 </div>
