@@ -10,8 +10,7 @@ namespace GamesPlatform.Services.Reviews
         Task DeleteReviewAsync(int reviewId);
         Task<ICollection<Review>> GetReviewsAsync();
         Task<Review> GetReviewByIdAsync(int reviewId);
-        Task<ICollection<ReviewDTO>> GetReviewDTOsAsync();
+        Task<ICollection<ReviewDTO>> GetReviewDTOsAsync(string? query = null, string? filterBy = null);
         Task<ICollection<Review>> GetUserReviewsAsync(string userId);
-
     }
 }

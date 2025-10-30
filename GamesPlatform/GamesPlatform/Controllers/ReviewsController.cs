@@ -25,9 +25,12 @@ namespace GamesPlatform.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string? q, string? by)
         {
-            var reviews = await reviewsService.GetReviewDTOsAsync();
+            ViewBag.SearchQuery = q ?? "";
+            ViewBag.FilterBy = by ?? "username";
+
+            var reviews = await reviewsService.GetReviewDTOsAsync(q, by);
             return View(reviews);
         }
 
@@ -130,7 +133,8 @@ namespace GamesPlatform.Controllers
                     return NotFound();
 
                 var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-                if (string.IsNullOrEmpty(currentUserId) || review.UserId != currentUserId)
+                var isAdmin = User.IsInRole("Admin");
+                if (string.IsNullOrEmpty(currentUserId) || (review.UserId != currentUserId && !isAdmin))
                     return Forbid();
 
                 return View(review);
@@ -159,7 +163,8 @@ namespace GamesPlatform.Controllers
                     return NotFound();
 
                 var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-                if (string.IsNullOrEmpty(currentUserId) || review.UserId != currentUserId)
+                var isAdmin = User.IsInRole("Admin");
+                if (string.IsNullOrEmpty(currentUserId) || (review.UserId != currentUserId && !isAdmin))
                     return Forbid();
 
                 await reviewsService.EditReviewAsync(id, description);

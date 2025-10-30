@@ -69,13 +69,35 @@ namespace GamesPlatform.Services.Reviews
             return review;
         }
 
-        public async Task<ICollection<ReviewDTO>> GetReviewDTOsAsync()
+        public async Task<ICollection<ReviewDTO>> GetReviewDTOsAsync(string? query = null, string? filterBy = null)
         {
             using var db = await dbFactory.CreateDbContextAsync();
 
-            var reviews = await db.Reviews
+            var reviewsQuery = db.Reviews
                 .Include(r => r.Game)
                 .Include(r => r.User)
+                .AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(query))
+            {
+                var qLower = query.ToLowerInvariant();
+                var by = (filterBy ?? "username").ToLowerInvariant();
+
+                if (by == "email")
+                {
+                    reviewsQuery = reviewsQuery.Where(r => r.User != null && r.User.Email != null && r.User.Email.ToLower().Contains(qLower));
+                }
+                else if (by == "game")
+                {
+                    reviewsQuery = reviewsQuery.Where(r => r.Game != null && r.Game.Title != null && r.Game.Title.ToLower().Contains(qLower));
+                }
+                else
+                {
+                    reviewsQuery = reviewsQuery.Where(r => r.User != null && r.User.UserName != null && r.User.UserName.ToLower().Contains(qLower));
+                }
+            }
+
+            var reviews = await reviewsQuery
                 .Select(r => new ReviewDTO
                 {
                     ReviewId = r.ReviewId,

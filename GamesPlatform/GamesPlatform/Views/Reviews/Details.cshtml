@@ -1,7 +1,10 @@
 ﻿@model GamesPlatform.Models.Review
+@using System.Security.Claims
 
 @{
     ViewData["Title"] = "Review Details";
+    var currentUserId = User?.FindFirstValue(ClaimTypes.NameIdentifier) ?? "";
+    var isAdmin = User?.IsInRole("Admin") ?? false;
 }
 
 <h1>Review Details</h1>
@@ -22,7 +25,10 @@
 </div>
 
 <p>
-    <a class="btn btn-secondary" asp-action="Edit" asp-route-id="@Model.ReviewId">Edit</a>
-    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@Model.ReviewId">Delete</a>
+    @if (isAdmin || (!string.IsNullOrEmpty(currentUserId) && Model.UserId == currentUserId))
+    {
+        <a class="btn btn-secondary" asp-action="Edit" asp-route-id="@Model.ReviewId">Edit</a>
+        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@Model.ReviewId">Delete</a>
+    }
     <a class="btn btn-link" asp-action="Index">Back to List</a>
 </p>

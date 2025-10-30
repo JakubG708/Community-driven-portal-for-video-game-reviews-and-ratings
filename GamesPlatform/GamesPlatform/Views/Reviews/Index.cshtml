@@ -1,37 +1,75 @@
 ﻿@model IEnumerable<GamesPlatform.DTOs.ReviewDTO>
+@using System.Security.Claims
 
 @{
     ViewData["Title"] = "Reviews";
+    var currentQuery = ViewBag.SearchQuery as string ?? "";
+    var currentBy = (ViewBag.FilterBy as string ?? "username").ToLowerInvariant();
+    var currentUserId = User?.FindFirstValue(ClaimTypes.NameIdentifier) ?? "";
+    var isAdmin = User?.IsInRole("Admin") ?? false;
 }
 
 <h1>Reviews</h1>
 
-<p>
-    <a class="btn btn-primary" asp-controller="Reviews" asp-action="Create">Create New Review</a>
-</p>
+<div class="mb-3">
+    <p>All reviews</p>
+</div>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Game</th>
-            <th>User</th>
-            <th>Description</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>@item.GameTitle</td>
-            <td>@item.UserName</td>
-            <td>@(item.Description?.Length > 100 ? item.Description.Substring(0, 100) + "…" : item.Description)</td>
-            <td>
-                <a asp-controller="Reviews" asp-action="Details" asp-route-id="@item.ReviewId">Details</a> |
-                <a asp-controller="Reviews" asp-action="Edit" asp-route-id="@item.ReviewId">Edit</a> |
-                <a asp-controller="Reviews" asp-action="Delete" asp-route-id="@item.ReviewId">Delete</a>
-            </td>
-        </tr>
-    }
-    </tbody>
-</table>
+<div class="row mb-3">
+    <div class="col-md-8">
+        <form asp-action="Index" method="get" class="d-flex">
+            <input type="search" name="q" value="@currentQuery" class="form-control me-2" placeholder="Szukaj..." />
+            <select name="by" class="form-select me-2" style="width:220px;">
+                <option value="username" selected="@(currentBy == "username")">Login</option>
+                <option value="email" selected="@(currentBy == "email")">E-mail</option>
+                <option value="game" selected="@(currentBy == "game")">Gra</option>
+            </select>
+            <button type="submit" class="btn btn-primary">Szukaj</button>
+            <a asp-action="Index" class="btn btn-outline-secondary ms-2">Wyczyść</a>
+        </form>
+    </div>
+    <div class="col-md-4 text-end">
+        @if (User?.Identity?.IsAuthenticated ?? false)
+        {
+            <a asp-action="Create" class="btn btn-success">Dodaj recenzję</a>
+        }
+    </div>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info text-center">
+        No reviews found in the database.
+    </div>
+}
+else
+{
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Game</th>
+                <th>User</th>
+                <th>Description</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.GameTitle</td>
+                <td>@item.UserName</td>
+                <td>@(item.Description?.Length > 100 ? item.Description.Substring(0, 100) + "…" : item.Description)</td>
+                <td>
+                    <a class="btn btn-sm btn-outline-primary" asp-action="Details" asp-route-id="@item.ReviewId">Details</a>
+                    @if (isAdmin || (!string.IsNullOrEmpty(currentUserId) && item.UserId == currentUserId))
+                    {
+                        <a class="btn btn-sm btn-outline-secondary ms-2" asp-action="Edit" asp-route-id="@item.ReviewId">Edit</a>
+                        <a class="btn btn-sm btn-outline-danger ms-2" asp-action="Delete" asp-route-id="@item.ReviewId">Delete</a>
+                    }
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
