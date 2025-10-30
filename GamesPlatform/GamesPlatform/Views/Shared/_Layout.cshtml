@@ -40,12 +40,50 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
+            @* powiadomienia z TempData *@
+            @if (TempData["Success"] != null)
+            {
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    @TempData["Success"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+            @if (TempData["Error"] != null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    @TempData["Error"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+            @if (TempData["Info"] != null)
+            {
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    @TempData["Info"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+
             @RenderBody()
         </main>
     </div>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script>
+        // automatyczne zamknięcie powiadomień po 6 sekundach
+        (function () {
+            setTimeout(function () {
+                var alerts = document.querySelectorAll('.alert-dismissible.fade.show');
+                alerts.forEach(function (a) {
+                    // użyj bootstrapowego ukrycia
+                    var bsAlert = bootstrap.Alert.getOrCreateInstance(a);
+                    bsAlert.close();
+                });
+            }, 6000);
+        })();
+    </script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

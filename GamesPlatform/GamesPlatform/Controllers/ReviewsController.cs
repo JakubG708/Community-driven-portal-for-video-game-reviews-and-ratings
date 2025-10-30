@@ -8,7 +8,6 @@ using System.Security.Claims;
 using System.Linq;
 using GamesPlatform.Services.Libraries;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace GamesPlatform.Controllers
 {
@@ -18,7 +17,6 @@ namespace GamesPlatform.Controllers
         private readonly IGamesService gamesService;
         private readonly ILIbraryService lIbraryService;
 
-        [ActivatorUtilitiesConstructor]
         public ReviewsController(IReviewsService reviewsService, IGamesService gamesService, ILIbraryService lIbraryService)
         {
             this.reviewsService = reviewsService;
@@ -34,21 +32,6 @@ namespace GamesPlatform.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Details(int id)
-        {
-            try
-            {
-                var review = await reviewsService.GetReviewByIdAsync(id);
-                return View(review);
-            }
-            catch (Exception ex)
-            {
-                return NotFound(ex.Message);
-            }
-        }
-
-        [Authorize]
-        [HttpGet]
         public async Task<IActionResult> Create(int? gameId)
         {
             var games = await gamesService.GetGamesAsync();
@@ -62,17 +45,20 @@ namespace GamesPlatform.Controllers
             {
                 var selected = games.FirstOrDefault(g => g.GameId == gameId.Value);
                 if (selected == null) return NotFound();
-                // sprawdź czy użytkownik ma grę w bibliotece
+
                 try
                 {
                     var lib = await lIbraryService.GetUserLibraryAsync(userId);
                     if (!lib.Any(x => x.GameId == gameId.Value))
-                        return Forbid();
+                    {
+                        TempData["Error"] = "Aby dodać recenzję musisz najpierw dodać grę do swojej biblioteki.";
+                        return RedirectToAction("Game", "Games", new { id = gameId.Value });
+                    }
                 }
                 catch
                 {
-                    // brak biblioteki -> zabroń dodawania recenzji
-                    return Forbid();
+                    TempData["Error"] = "Twoja biblioteka nie istnieje. Najpierw dodaj grę do biblioteki.";
+                    return RedirectToAction("Game", "Games", new { id = gameId.Value });
                 }
 
                 ViewBag.SelectedGameId = selected.GameId;
@@ -105,24 +91,19 @@ namespace GamesPlatform.Controllers
                 return View();
             }
 
-            // sprawdź czy użytkownik ma dodaną grę w bibliotece
             try
             {
                 var lib = await lIbraryService.GetUserLibraryAsync(userId);
                 if (!lib.Any(x => x.GameId == gameId))
                 {
-                    ModelState.AddModelError("", "Musisz mieć tę grę w swojej bibliotece, aby dodać recenzję.");
-                    var gamesForLibError = await gamesService.GetGamesAsync();
-                    ViewBag.Games = new SelectList(gamesForLibError, "GameId", "Title");
-                    return View();
+                    TempData["Error"] = "Aby dodać recenzję musisz najpierw dodać grę do swojej biblioteki.";
+                    return RedirectToAction("Game", "Games", new { id = gameId });
                 }
             }
             catch
             {
-                ModelState.AddModelError("", "Twoja biblioteka nie istnieje. Nie możesz dodać recenzji.");
-                var gamesForLibError = await gamesService.GetGamesAsync();
-                ViewBag.Games = new SelectList(gamesForLibError, "GameId", "Title");
-                return View();
+                TempData["Error"] = "Twoja biblioteka nie istnieje. Najpierw dodaj grę do biblioteki.";
+                return RedirectToAction("Game", "Games", new { id = gameId });
             }
 
             await reviewsService.AddReviewAsync(gameId, userId, description);

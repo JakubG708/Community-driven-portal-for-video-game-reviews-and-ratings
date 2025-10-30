@@ -1,4 +1,5 @@
 ﻿@model GamesPlatform.DTOs.GameDTO
+@using System.Security.Claims
 
 @{
     ViewData["Title"] = Model.Title;
@@ -42,6 +43,18 @@
 
                 @if (User.Identity?.IsAuthenticated ?? false)
                 {
+                    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                    var hasReview = Model.Reviews != null && Model.Reviews.Any(r => r.UserId == userId);
+
+                    if (hasReview)
+                    {
+                        <a class="btn btn-success ms-2" asp-controller="Games" asp-action="AddRating" asp-route-gameId="@Model.GameId">Add Rating</a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-warning ms-2" asp-controller="Reviews" asp-action="Create" asp-route-gameId="@Model.GameId">Add Review first</a>
+                    }
+
                     <form asp-controller="Users" asp-action="AddToLibrary" method="post" class="d-inline-block ms-2">
                         @Html.AntiForgeryToken()
                         <input type="hidden" name="gameId" value="@Model.GameId" />

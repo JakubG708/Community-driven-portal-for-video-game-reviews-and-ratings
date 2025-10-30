@@ -1,6 +1,9 @@
-﻿using GamesPlatform.DTOs;
+﻿using System.Security.Claims;
+using GamesPlatform.DTOs;
 using GamesPlatform.Services.Games;
 using GamesPlatform.Services.Platforms;
+using GamesPlatform.Services.Ratings;
+using GamesPlatform.Services.Libraries;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,12 +13,17 @@ namespace GamesPlatform.Controllers
     {
         private readonly IGamesService gamesService;
         private readonly IPlatformService platformService;
+        private readonly IRatingService ratingService;
+        private readonly ILIbraryService lIbraryService;
 
-        public GamesController(IGamesService gamesService, IPlatformService platformService)
+        public GamesController(IGamesService gamesService, IPlatformService platformService, IRatingService ratingService, ILIbraryService lIbraryService)
         {
             this.gamesService = gamesService;
             this.platformService = platformService;
+            this.ratingService = ratingService;
+            this.lIbraryService = lIbraryService;
         }
+
         public async Task<IActionResult> Index()
         {
             var games = await gamesService.GetGamesAsync();
@@ -93,6 +101,123 @@ namespace GamesPlatform.Controllers
 
             await gamesService.AddGameAsync(gameDTO);
             return RedirectToAction(nameof(Index));
+        }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> AddRating(int gameId)
+        {
+            var game = await gamesService.GetGameByIdAsync(gameId);
+            if (game == null)
+                return NotFound();
+
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userId))
+                return Forbid();
+
+            try
+            {
+                var lib = await lIbraryService.GetUserLibraryAsync(userId);
+                if (!lib.Any(x => x.GameId == gameId))
+                {
+                    TempData["Error"] = "Aby dodać ocenę musisz najpierw dodać grę do swojej biblioteki.";
+                    return RedirectToAction(nameof(Game), new { id = gameId });
+                }
+            }
+            catch
+            {
+                TempData["Error"] = "Twoja biblioteka nie istnieje. Najpierw dodaj grę do biblioteki.";
+                return RedirectToAction(nameof(Game), new { id = gameId });
+            }
+
+            var existing = await ratingService.GetUserRatingAsync(gameId, userId);
+            if (existing != null)
+            {
+                var dto = new RatingDTO
+                {
+                    Gameplay = existing.Gameplay,
+                    Graphics = existing.Graphics,
+                    Optimization = existing.Optimization,
+                    Story = existing.Story
+                };
+
+                ViewBag.IsEdit = true;
+                ViewBag.RatingId = existing.RatingId;
+                ViewBag.GameId = gameId;
+                ViewBag.GameTitle = game.Title;
+                return View(dto);
+            }
+
+            ViewBag.IsEdit = false;
+            ViewBag.GameId = gameId;
+            ViewBag.GameTitle = game.Title;
+            return View(new RatingDTO());
+        }
+
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddRating(int gameId, RatingDTO rating)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userId))
+                return Forbid();
+
+            try
+            {
+                var lib = await lIbraryService.GetUserLibraryAsync(userId);
+                if (!lib.Any(x => x.GameId == gameId))
+                {
+                    TempData["Error"] = "Aby dodać ocenę musisz najpierw dodać grę do swojej biblioteki.";
+                    return RedirectToAction(nameof(Game), new { id = gameId });
+                }
+            }
+            catch
+            {
+                TempData["Error"] = "Twoja biblioteka nie istnieje. Najpierw dodaj grę do biblioteki.";
+                return RedirectToAction(nameof(Game), new { id = gameId });
+            }
+
+            if (rating == null
+                || rating.Gameplay is < 1 or > 10
+                || rating.Graphics is < 1 or > 10
+                || rating.Optimization is < 1 or > 10
+                || rating.Story is < 1 or > 10)
+            {
+                ModelState.AddModelError(string.Empty, "Oceny muszą być w zakresie 1–10.");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                var game = await gamesService.GetGameByIdAsync(gameId);
+                ViewBag.GameId = gameId;
+                ViewBag.GameTitle = game?.Title ?? $"GameId: {gameId}";
+                var existing = await ratingService.GetUserRatingAsync(gameId, userId);
+                ViewBag.IsEdit = existing != null;
+                ViewBag.RatingId = existing?.RatingId ?? 0;
+                return View(rating);
+            }
+
+            try
+            {
+                var existing = await ratingService.GetUserRatingAsync(gameId, userId);
+                if (existing != null)
+                {
+                    await ratingService.EditRatingAsync(existing.RatingId, rating);
+                    TempData["Success"] = "Ocena została zaktualizowana.";
+                }
+                else
+                {
+                    await ratingService.AddRatingAsync(gameId, userId, rating);
+                    TempData["Success"] = "Ocena została zapisana.";
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = ex.Message;
+            }
+
+            return RedirectToAction(nameof(Game), new { id = gameId });
         }
     }
 }

@@ -1,0 +1,56 @@
+﻿@model GamesPlatform.DTOs.RatingDTO
+
+@{
+    ViewData["Title"] = "Add Rating";
+    var gameTitle = ViewBag.GameTitle as string ?? "Gra";
+    var gameId = ViewBag.GameId as int? ?? 0;
+    var isEdit = ViewBag.IsEdit as bool? ?? false;
+    var ratingId = ViewBag.RatingId as int? ?? 0;
+}
+
+<div class="container mt-4">
+    <h2>@(isEdit ? "Edytuj ocenę — " : "Dodaj ocenę — ")@gameTitle</h2>
+
+    <form asp-action="AddRating" method="post">
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="gameId" value="@gameId" />
+        @if (isEdit)
+        {
+            <input type="hidden" name="ratingId" value="@ratingId" />
+        }
+
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+        <div class="row g-3">
+            <div class="col-md-3">
+                <label class="form-label">Gameplay (1–10)</label>
+                <input asp-for="Gameplay" type="number" min="1" max="10" class="form-control" />
+                <span asp-validation-for="Gameplay" class="text-danger"></span>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Graphics (1–10)</label>
+                <input asp-for="Graphics" type="number" min="1" max="10" class="form-control" />
+                <span asp-validation-for="Graphics" class="text-danger"></span>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Optimization (1–10)</label>
+                <input asp-for="Optimization" type="number" min="1" max="10" class="form-control" />
+                <span asp-validation-for="Optimization" class="text-danger"></span>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Story (1–10)</label>
+                <input asp-for="Story" type="number" min="1" max="10" class="form-control" />
+                <span asp-validation-for="Story" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <button type="submit" class="btn btn-success">@(isEdit ? "Zaktualizuj ocenę" : "Zapisz ocenę")</button>
+            <a asp-action="Game" asp-route-id="@gameId" class="btn btn-secondary ms-2">Anuluj</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
