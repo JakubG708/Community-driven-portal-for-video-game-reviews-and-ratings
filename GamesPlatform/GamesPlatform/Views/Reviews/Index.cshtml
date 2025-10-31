@@ -18,20 +18,43 @@
 <div class="row mb-3">
     <div class="col-md-8">
         <form asp-action="Index" method="get" class="d-flex">
-            <input type="search" name="q" value="@currentQuery" class="form-control me-2" placeholder="Szukaj..." />
+            <input type="search" name="q" value="@currentQuery" class="form-control me-2" placeholder="Search..." />
             <select name="by" class="form-select me-2" style="width:220px;">
-                <option value="username" selected="@(currentBy == "username")">Login</option>
-                <option value="email" selected="@(currentBy == "email")">E-mail</option>
-                <option value="game" selected="@(currentBy == "game")">Gra</option>
+                @if (currentBy == "username")
+                {
+                    <option value="username" selected>Username</option>
+                }
+                else
+                {
+                    <option value="username">Username</option>
+                }
+
+                @if (currentBy == "email")
+                {
+                    <option value="email" selected>E-mail</option>
+                }
+                else
+                {
+                    <option value="email">E-mail</option>
+                }
+
+                @if (currentBy == "game")
+                {
+                    <option value="game" selected>Game</option>
+                }
+                else
+                {
+                    <option value="game">Game</option>
+                }
             </select>
-            <button type="submit" class="btn btn-primary">Szukaj</button>
-            <a asp-action="Index" class="btn btn-outline-secondary ms-2">Wyczyść</a>
+            <button type="submit" class="btn btn-primary">Search</button>
+            <a asp-action="Index" class="btn btn-outline-secondary ms-2">Clear</a>
         </form>
     </div>
     <div class="col-md-4 text-end">
         @if (User?.Identity?.IsAuthenticated ?? false)
         {
-            <a asp-action="Create" class="btn btn-success">Dodaj recenzję</a>
+            <a asp-action="Create" class="btn btn-success">Add review</a>
         }
     </div>
 </div>

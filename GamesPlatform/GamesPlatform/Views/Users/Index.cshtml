@@ -9,19 +9,34 @@
 <h1>Users</h1>
 
 <div class="mb-3">
-    <p>Lista zarejestrowanych użytkowników. Kliknij nazwę, aby zobaczyć szczegóły profilu.</p>
+    <p>List of registered users. Click a username to view the profile details.</p>
 </div>
 
 <div class="row mb-3">
     <div class="col-md-8">
         <form asp-action="Index" method="get" class="d-flex">
-            <input type="search" name="q" value="@currentQuery" class="form-control me-2" placeholder="Szukaj..." />
+            <input type="search" name="q" value="@currentQuery" class="form-control me-2" placeholder="Search..." />
             <select name="by" class="form-select me-2" style="width:220px;">
-                <option value="username" selected="@(currentBy == "username")">Login</option>
-                <option value="email" selected="@(currentBy == "email")">E-mail</option>
+                @if (currentBy == "username")
+                {
+                    <option value="username" selected>Username</option>
+                }
+                else
+                {
+                    <option value="username">Username</option>
+                }
+
+                @if (currentBy == "email")
+                {
+                    <option value="email" selected>E-mail</option>
+                }
+                else
+                {
+                    <option value="email">E-mail</option>
+                }
             </select>
-            <button type="submit" class="btn btn-primary">Szukaj</button>
-            <a asp-action="Index" class="btn btn-outline-secondary ms-2">Wyczyść</a>
+            <button type="submit" class="btn btn-primary">Search</button>
+            <a asp-action="Index" class="btn btn-outline-secondary ms-2">Clear</a>
         </form>
     </div>
 </div>

@@ -46,7 +46,7 @@
                                 @if (userRating != null)
                                 {
                                     <div class="mb-2">
-                                        <strong>Ocena użytkownika:</strong>
+                                        <strong>User rating:</strong>
                                         <span class="badge bg-info text-dark ms-2">G: @userRating.Gameplay</span>
                                         <span class="badge bg-info text-dark ms-1">Gr: @userRating.Graphics</span>
                                         <span class="badge bg-info text-dark ms-1">O: @userRating.Optimization</span>
@@ -55,20 +55,16 @@
                                 }
                                 @if (isOwnerOrAdmin)
                                 {
-                                    @if (isOwnerOrAdmin)
-                                    {
-                                        <form asp-controller="Users" asp-action="RemoveFromLibrary"
-                                              asp-route-userId="@Model.Id"
-                                              method="post" class="mt-2"
-                                              onsubmit="return confirm('Na pewno usunąć tę grę z biblioteki?');">
-                                            @Html.AntiForgeryToken()
-                                            <input type="hidden" name="gameId" value="@lg.GameId" />
-                                            <button type="submit" class="btn btn-sm btn-danger position-relative z-3">
-                                                Usuń z biblioteki
-                                            </button>
-                                        </form>
-
-                                    }
+                                    <form asp-controller="Users" asp-action="RemoveFromLibrary"
+                                          asp-route-userId="@Model.Id"
+                                          method="post" class="mt-2"
+                                          onsubmit="return confirm('Are you sure you want to remove this game from the library?');">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="gameId" value="@lg.GameId" />
+                                        <button type="submit" class="btn btn-sm btn-danger position-relative z-3">
+                                            Remove from library
+                                        </button>
+                                    </form>
                                 }
                             </div>
                         </div>
@@ -78,7 +74,7 @@
         }
         else
         {
-            <p class="text-muted">Brak gier w bibliotece.</p>
+            <p class="text-muted">No games in the library.</p>
         }
     </section>
 
@@ -89,7 +85,7 @@
 
         @if (!reviews.Any())
         {
-            <p class="text-muted">Brak recenzji.</p>
+            <p class="text-muted">No reviews.</p>
         }
         else
         {
