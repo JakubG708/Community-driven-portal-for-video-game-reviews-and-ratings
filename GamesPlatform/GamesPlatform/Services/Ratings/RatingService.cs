@@ -74,7 +74,7 @@ namespace GamesPlatform.Services.Ratings
         public async Task<ICollection<Rating>> GetAllRatingsAsync()
         {
             using var db = dbFactory.CreateDbContext();
-            return await db.Ratings.ToListAsync();
+            return await db.Ratings.Include(r => r.Game).ToListAsync();
         }
 
         public async Task<Rating> GetUserRatingAsync(int gameId, string userId)

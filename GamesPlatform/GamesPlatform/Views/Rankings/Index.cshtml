@@ -1,1 +1,183 @@
-﻿<p>rankings controller<p/>
+﻿@model IEnumerable<GamesPlatform.DTOs.TopGameDTO>
+@using GamesPlatform.Enums
+@using System
+
+@{
+    ViewData["Title"] = "Rankings";
+    var selectedMetrics = (ViewBag.SelectedMetrics as string[]) ?? new[] { "overall" };
+    var totalGames = ViewBag.TotalGames as int? ?? 0;
+    var currentLimit = ViewBag.CurrentLimit as int? ?? 100;
+    var currentTag = (ViewBag.SelectedTag as string) ?? "";
+    var currentTagLower = currentTag.ToLowerInvariant();
+    var tagNames = Enum.GetNames(typeof(Tags)).Select(n => n).ToList();
+    var displayTag = string.IsNullOrEmpty(currentTag) ? "Wszystkie" : currentTag;
+}
+
+<h1>Top gier</h1>
+
+<div class="mb-3">
+    <p>Wybierz metryki, po których chcesz posortować top gier i ile pozycji wyświetlić. Możesz także filtrować po tagu (np. RPG).</p>
+</div>
+
+<form asp-action="Index" method="get" class="mb-4">
+    <div class="card">
+        <div class="card-body">
+            <div class="row g-3 align-items-end">
+                <div class="col-md-6">
+                    <label class="form-label d-block mb-2">Metryki</label>
+                    <div class="d-flex flex-wrap gap-2">
+                        @if (selectedMetrics.Contains("overall"))
+                        {
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="m_overall" name="metrics" value="overall" checked />
+                                <label class="form-check-label" for="m_overall">Overall</label>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="m_overall" name="metrics" value="overall" />
+                                <label class="form-check-label" for="m_overall">Overall</label>
+                            </div>
+                        }
+
+                        @if (selectedMetrics.Contains("gameplay"))
+                        {
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="m_gameplay" name="metrics" value="gameplay" checked />
+                                <label class="form-check-label" for="m_gameplay">Gameplay</label>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="m_gameplay" name="metrics" value="gameplay" />
+                                <label class="form-check-label" for="m_gameplay">Gameplay</label>
+                            </div>
+                        }
+
+                        @if (selectedMetrics.Contains("graphics"))
+                        {
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="m_graphics" name="metrics" value="graphics" checked />
+                                <label class="form-check-label" for="m_graphics">Graphics</label>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="m_graphics" name="metrics" value="graphics" />
+                                <label class="form-check-label" for="m_graphics">Graphics</label>
+                            </div>
+                        }
+
+                        @if (selectedMetrics.Contains("optimization"))
+                        {
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="m_optimization" name="metrics" value="optimization" checked />
+                                <label class="form-check-label" for="m_optimization">Optimization</label>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="m_optimization" name="metrics" value="optimization" />
+                                <label class="form-check-label" for="m_optimization">Optimization</label>
+                            </div>
+                        }
+
+                        @if (selectedMetrics.Contains("story"))
+                        {
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="m_story" name="metrics" value="story" checked />
+                                <label class="form-check-label" for="m_story">Story</label>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="m_story" name="metrics" value="story" />
+                                <label class="form-check-label" for="m_story">Story</label>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <label class="form-label">Tag</label>
+                    <select name="tag" class="form-select">
+                        @if (String.IsNullOrEmpty(currentTag))
+                        {
+                            <option value="" selected>Wszystkie</option>
+                        }
+                        else
+                        {
+                            <option value="">Wszystkie</option>
+                        }
+
+                        @foreach (var t in tagNames)
+                        {
+                            if (currentTagLower == t.ToLowerInvariant())
+                            {
+                                <option value="@t" selected>@t</option>
+                            }
+                            else
+                            {
+                                <option value="@t">@t</option>
+                            }
+                        }
+                    </select>
+                </div>
+
+                <div class="col-md-2">
+                    <label class="form-label">Ile gier</label>
+                    <div class="form-text small">Maksymalnie: @totalGames</div>
+                    <input type="number" name="limit" class="form-control" min="1" max="@totalGames" value="@currentLimit" />
+                    
+                </div>
+
+                <div class="col-md-2 text-end">
+                    <button type="submit" class="btn btn-primary w-100 mb-2">Pokaż</button>
+                    <a asp-action="Index" class="btn btn-outline-secondary w-100">Reset</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">Brak gier do wyświetlenia.</div>
+}
+else
+{
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Gra</th>
+                <th>Wynik</th>
+                <th>Ilość ocen</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @{
+            var i = 0;
+        }
+        @foreach (var item in Model)
+        {
+            i++;
+            <tr>
+                <td>@i</td>
+                <td>@item.Title</td>
+                <td>@item.Score.ToString("0.00")</td>
+                <td>@item.RatingsCount</td>
+                <td>
+                    <a class="btn btn-sm btn-outline-primary" asp-controller="Games" asp-action="Game" asp-route-id="@item.GameId">Szczegóły</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
