@@ -24,10 +24,9 @@ namespace GamesPlatform.Controllers
             this.lIbraryService = lIbraryService;
         }
 
-        // dodano parametry q (query) i by (title/developer/publisher)
         public async Task<IActionResult> Index(string q = null, string by = "title")
         {
-            var games = await gamesService.GetGamesAsync(); // pobierz wszystkie (serwis)
+            var games = await gamesService.GetGamesAsync(); 
             var list = games.AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(q))

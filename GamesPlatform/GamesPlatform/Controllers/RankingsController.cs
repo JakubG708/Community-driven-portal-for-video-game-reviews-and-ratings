@@ -19,16 +19,13 @@ namespace GamesPlatform.Controllers
 
         public async Task<IActionResult> Index([FromQuery] string[]? metrics, [FromQuery] int? limit, [FromQuery] string? tag)
         {
-            // domyślne metryki
             var selectedMetrics = (metrics == null || metrics.Length == 0)
                 ? new[] { "overall" }
                 : metrics.Select(m => m.Trim().ToLowerInvariant()).Where(m => !string.IsNullOrEmpty(m)).ToArray();
 
-            // pobierz wszystkie gry i oceny
             var games = (await gamesService.GetGamesAsync()).ToList();
             var ratings = (await ratingService.GetAllRatingsAsync()).ToList();
 
-            // filtrowanie po tagu (jeżeli podano)
             var selectedTag = (tag ?? "").Trim();
             if (!string.IsNullOrEmpty(selectedTag) && !string.Equals(selectedTag, "all", StringComparison.OrdinalIgnoreCase))
             {
@@ -38,17 +35,15 @@ namespace GamesPlatform.Controllers
                 }
                 else
                 {
-                    // niepoprawny tag — zwracamy pustą listę (można też pominąć filtrowanie)
                     games = new List<Models.Game>();
                 }
             }
 
             var totalGames = games.Count;
-            var maxLimit = Math.Max(1, totalGames); // co najmniej 1 jeżeli są gry
+            var maxLimit = Math.Max(1, totalGames);
             var take = limit.HasValue && limit.Value > 0 ? Math.Min(limit.Value, totalGames == 0 ? limit.Value : totalGames) : 100;
             if (take <= 0) take = 100;
 
-            // oblicz score dla każdej gry
             var result = new List<TopGameDTO>(games.Count);
             foreach (var g in games)
             {
@@ -61,13 +56,11 @@ namespace GamesPlatform.Controllers
                 }
                 else
                 {
-                    // dla każdej oceny policz punktację wg wybranych metryk
                     var perRatingScores = gameRatings.Select(r =>
                     {
                         var list = new List<double>();
                         if (selectedMetrics.Contains("overall"))
                         {
-                            // overall = średnia czterech komponentów
                             list.Add((r.Gameplay + r.Graphics + r.Optimization + r.Story) / 4.0);
                         }
                         else
@@ -77,8 +70,6 @@ namespace GamesPlatform.Controllers
                             if (selectedMetrics.Contains("optimization")) list.Add(r.Optimization);
                             if (selectedMetrics.Contains("story")) list.Add(r.Story);
                         }
-
-                        // jeżeli ktoś wybrał np. overall + gameplay to traktujemy listę jako zbiór wartości do uśrednienia
                         if (!list.Any()) return 0.0;
                         return list.Average();
                     });
@@ -95,7 +86,6 @@ namespace GamesPlatform.Controllers
                 });
             }
 
-            // posortuj i ogranicz
             var ordered = result
                 .OrderByDescending(x => x.Score)
                 .ThenByDescending(x => x.RatingsCount)
@@ -105,7 +95,7 @@ namespace GamesPlatform.Controllers
             ViewBag.SelectedMetrics = selectedMetrics;
             ViewBag.TotalGames = totalGames;
             ViewBag.CurrentLimit = take;
-            ViewBag.SelectedTag = selectedTag; // dodane
+            ViewBag.SelectedTag = selectedTag;
 
             return View(ordered);
         }
