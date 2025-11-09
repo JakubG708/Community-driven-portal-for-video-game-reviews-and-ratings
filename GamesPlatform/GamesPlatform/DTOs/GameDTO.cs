@@ -19,6 +19,6 @@ namespace GamesPlatform.DTOs
         public int? AvgOptimizationRating { get; set; }
         public int? AvgStoryRating { get; set; }
         public List<Review>? Reviews { get; set; }
-        public List<Platform>? Platforms { get; set; }
+        public List<Platforms>? Platforms { get; set; }
     }
 }

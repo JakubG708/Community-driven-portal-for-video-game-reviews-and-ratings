@@ -10,7 +10,6 @@
     <form asp-action="Edit" method="post" class="needs-validation" novalidate>
         <input type="hidden" asp-for="GameId" />
 
-        <!-- Title & Tag -->
         <div class="row mb-3">
             <div class="col-md-6">
                 <label asp-for="Title" class="form-label fw-bold"></label>
@@ -25,7 +24,6 @@
             </div>
         </div>
 
-        <!-- ReleaseYear & Developer -->
         <div class="row mb-3">
             <div class="col-md-6">
                 <label asp-for="ReleaseYear" class="form-label fw-bold"></label>
@@ -40,7 +38,6 @@
             </div>
         </div>
 
-        <!-- Publisher & ImageUrl -->
         <div class="row mb-3">
             <div class="col-md-6">
                 <label asp-for="Publisher" class="form-label fw-bold"></label>
@@ -55,40 +52,36 @@
             </div>
         </div>
 
-        <!-- ThumbNailUrl -->
         <div class="mb-3">
             <label asp-for="ThumbNailUrl" class="form-label fw-bold"></label>
             <input asp-for="ThumbNailUrl" class="form-control" placeholder="Thumbnail URL" />
             <span asp-validation-for="ThumbNailUrl" class="text-danger"></span>
         </div>
 
-        <!-- Description -->
         <div class="mb-3">
             <label asp-for="Description" class="form-label fw-bold"></label>
             <textarea asp-for="Description" class="form-control" rows="4"></textarea>
             <span asp-validation-for="Description" class="text-danger"></span>
         </div>
 
-        <!-- Platforms -->
         <div class="mb-3">
             <label class="form-label fw-bold">Platforms</label>
             <div>
-                @foreach (var platform in Model.AllPlatforms)
+                @foreach (var val in Enum.GetValues(typeof(GamesPlatform.Enums.Platforms)).Cast<GamesPlatform.Enums.Platforms>())
                 {
                     <div class="form-check form-check-inline">
                         <input class="form-check-input"
                                type="checkbox"
-                               name="SelectedPlatformIds"
-                               value="@platform.PlatformId"
-                               @(Model.SelectedPlatformIds.Contains(platform.PlatformId) ? "checked=\"checked\"" : "") />
-                        <label class="form-check-label">@platform.PlatformName</label>
+                               name="Platforms"
+                               value="@( (int)val )"
+                               @(Model.Platforms != null && Model.Platforms.Contains(val) ? "checked" : "") />
+                        <label class="form-check-label">@val</label>
                     </div>
                 }
-                <span asp-validation-for="SelectedPlatformIds" class="text-danger"></span>
             </div>
+            <span asp-validation-for="Platforms" class="text-danger"></span>
         </div>
 
-        <!-- Submit buttons -->
         <div class="text-center mt-4">
             <button type="submit" class="btn btn-success px-4 me-2">Save Changes</button>
             <a asp-action="Index" class="btn btn-secondary px-4">Back to List</a>

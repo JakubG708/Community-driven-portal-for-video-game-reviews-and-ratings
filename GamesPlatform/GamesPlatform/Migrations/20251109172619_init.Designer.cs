@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace GamesPlatform.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20251017145108_LibGame")]
-    partial class LibGame
+    [Migration("20251109172619_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,6 +43,10 @@ namespace GamesPlatform.Migrations
 
                     b.Property<string>("ImageUrl")
                         .HasColumnType("text");
+
+                    b.PrimitiveCollection<int[]>("Platforms")
+                        .IsRequired()
+                        .HasColumnType("integer[]");
 
                     b.Property<string>("Publisher")
                         .IsRequired()
@@ -112,27 +116,6 @@ namespace GamesPlatform.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Libraries");
-                });
-
-            modelBuilder.Entity("GamesPlatform.Models.Platform", b =>
-                {
-                    b.Property<int>("PlatformId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("PlatformId"));
-
-                    b.Property<int>("GameId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("PlatformName")
-                        .HasColumnType("integer");
-
-                    b.HasKey("PlatformId");
-
-                    b.HasIndex("GameId");
-
-                    b.ToTable("Platforms");
                 });
 
             modelBuilder.Entity("GamesPlatform.Models.Rating", b =>
@@ -425,17 +408,6 @@ namespace GamesPlatform.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("GamesPlatform.Models.Platform", b =>
-                {
-                    b.HasOne("GamesPlatform.Models.Game", "Game")
-                        .WithMany("Platforms")
-                        .HasForeignKey("GameId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Game");
-                });
-
             modelBuilder.Entity("GamesPlatform.Models.Rating", b =>
                 {
                     b.HasOne("GamesPlatform.Models.Game", "Game")
@@ -527,8 +499,6 @@ namespace GamesPlatform.Migrations
 
             modelBuilder.Entity("GamesPlatform.Models.Game", b =>
                 {
-                    b.Navigation("Platforms");
-
                     b.Navigation("Ratings");
 
                     b.Navigation("Reviews");

@@ -16,6 +16,7 @@ namespace GamesPlatform.Models
         public string? ThumbNailUrl { get; set; }
         public ICollection<Review> Reviews { get; set; } = new List<Review>();
         public ICollection<Rating> Ratings { get; set; } = new List<Rating>();
-        public ICollection<Platform> Platforms { get; set; } = new List<Platform>();
+        public List<Platforms> Platforms { get; set; } = new List<Platforms>();
+
     }
 }

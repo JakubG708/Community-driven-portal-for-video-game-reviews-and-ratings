@@ -1,5 +1,6 @@
 ﻿@model GamesPlatform.DTOs.GameDTO
 @using System.Security.Claims
+@using GamesPlatform.Enums
 
 @{
     ViewData["Title"] = Model.Title;
@@ -31,12 +32,19 @@
             </ul>
 
             <h4 class="mt-4">Available on Platforms</h4>
-            <ul>
-                @foreach (var platform in Model.Platforms)
-                {
-                    <li>@platform.PlatformName</li>
-                }
-            </ul>
+            @if (Model.Platforms != null && Model.Platforms.Any())
+            {
+                <div class="mb-3">
+                    @foreach (var platform in Model.Platforms)
+                    {
+                        <span class="badge bg-secondary me-1 mb-1">@platform.ToString()</span>
+                    }
+                </div>
+            }
+            else
+            {
+                <p class="text-muted">Brak przypisanych platform.</p>
+            }
 
             <div class="mt-3">
                 <a class="btn btn-primary" asp-controller="Reviews" asp-action="Create" asp-route-gameId="@Model.GameId">Add Review</a>

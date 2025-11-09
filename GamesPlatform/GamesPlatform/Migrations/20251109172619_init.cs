@@ -64,7 +64,8 @@ namespace GamesPlatform.Migrations
                     Publisher = table.Column<string>(type: "text", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: false),
                     ImageUrl = table.Column<string>(type: "text", nullable: true),
-                    ThumbNailUrl = table.Column<string>(type: "text", nullable: true)
+                    ThumbNailUrl = table.Column<string>(type: "text", nullable: true),
+                    Platforms = table.Column<int[]>(type: "integer[]", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -183,10 +184,7 @@ namespace GamesPlatform.Migrations
                 {
                     LibraryId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    UserId = table.Column<string>(type: "text", nullable: false),
-                    GameId = table.Column<int>(type: "integer", nullable: false),
-                    Status = table.Column<int>(type: "integer", nullable: false),
-                    AddedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    UserId = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -196,32 +194,6 @@ namespace GamesPlatform.Migrations
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Libraries_Games_GameId",
-                        column: x => x.GameId,
-                        principalTable: "Games",
-                        principalColumn: "GameId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Platforms",
-                columns: table => new
-                {
-                    PlatformId = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    PlatformName = table.Column<int>(type: "integer", nullable: false),
-                    GameId = table.Column<int>(type: "integer", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Platforms", x => x.PlatformId);
-                    table.ForeignKey(
-                        name: "FK_Platforms_Games_GameId",
-                        column: x => x.GameId,
-                        principalTable: "Games",
-                        principalColumn: "GameId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -282,6 +254,34 @@ namespace GamesPlatform.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "LibGames",
+                columns: table => new
+                {
+                    LibGameId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    LibraryId = table.Column<int>(type: "integer", nullable: false),
+                    GameId = table.Column<int>(type: "integer", nullable: false),
+                    Status = table.Column<int>(type: "integer", nullable: false),
+                    AddedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LibGames", x => x.LibGameId);
+                    table.ForeignKey(
+                        name: "FK_LibGames_Games_GameId",
+                        column: x => x.GameId,
+                        principalTable: "Games",
+                        principalColumn: "GameId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_LibGames_Libraries_LibraryId",
+                        column: x => x.LibraryId,
+                        principalTable: "Libraries",
+                        principalColumn: "LibraryId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -320,19 +320,19 @@ namespace GamesPlatform.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Libraries_GameId",
-                table: "Libraries",
+                name: "IX_LibGames_GameId",
+                table: "LibGames",
                 column: "GameId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_LibGames_LibraryId",
+                table: "LibGames",
+                column: "LibraryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Libraries_UserId",
                 table: "Libraries",
                 column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Platforms_GameId",
-                table: "Platforms",
-                column: "GameId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Ratings_GameId",
@@ -374,10 +374,7 @@ namespace GamesPlatform.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Libraries");
-
-            migrationBuilder.DropTable(
-                name: "Platforms");
+                name: "LibGames");
 
             migrationBuilder.DropTable(
                 name: "Ratings");
@@ -389,10 +386,13 @@ namespace GamesPlatform.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "Libraries");
 
             migrationBuilder.DropTable(
                 name: "Games");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
         }
     }
 }

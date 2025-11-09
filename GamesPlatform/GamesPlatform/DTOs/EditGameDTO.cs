@@ -14,8 +14,5 @@ public class EditGameDTO
     public string? ImageUrl { get; set; }
     public string? ThumbNailUrl { get; set; }
 
-    [Required]
-    public List<int> SelectedPlatformIds { get; set; } = new List<int>(); // PlatformId-y wybrane w formularzu
-
-    public List<Platform> AllPlatforms { get; set; } = new List<Platform>(); // do wyświetlenia checkboxów
-}
+    public List<Platforms> Platforms { get; set; } = new List<Platforms>();
+    }

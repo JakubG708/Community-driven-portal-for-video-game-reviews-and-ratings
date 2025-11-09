@@ -1,7 +1,6 @@
 ﻿using System.Security.Claims;
 using GamesPlatform.DTOs;
 using GamesPlatform.Services.Games;
-using GamesPlatform.Services.Platforms;
 using GamesPlatform.Services.Ratings;
 using GamesPlatform.Services.Libraries;
 using Microsoft.AspNetCore.Authorization;
@@ -12,21 +11,19 @@ namespace GamesPlatform.Controllers
     public class GamesController : Controller
     {
         private readonly IGamesService gamesService;
-        private readonly IPlatformService platformService;
         private readonly IRatingService ratingService;
         private readonly ILIbraryService lIbraryService;
 
-        public GamesController(IGamesService gamesService, IPlatformService platformService, IRatingService ratingService, ILIbraryService lIbraryService)
+        public GamesController(IGamesService gamesService, IRatingService ratingService, ILIbraryService lIbraryService)
         {
             this.gamesService = gamesService;
-            this.platformService = platformService;
             this.ratingService = ratingService;
             this.lIbraryService = lIbraryService;
         }
 
         public async Task<IActionResult> Index(string q = null, string by = "title")
         {
-            var games = await gamesService.GetGamesAsync(); 
+            var games = await gamesService.GetGamesAsync();
             var list = games.AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(q))
@@ -65,7 +62,9 @@ namespace GamesPlatform.Controllers
         public async Task<IActionResult> Edit(int id)
         {
             var game = await gamesService.GetGameByIdAsync(id);
-            var allPlatforms = await platformService.GetPlatformsAsync();
+            if (game == null)
+                return NotFound();
+
             var editDTO = new EditGameDTO
             {
                 GameId = game.GameId,
@@ -77,12 +76,11 @@ namespace GamesPlatform.Controllers
                 Description = game.Description,
                 ImageUrl = game.ImageUrl,
                 ThumbNailUrl = game.ThumbNailUrl,
-                SelectedPlatformIds = game.Platforms.Select(p => p.PlatformId).ToList(),
-                AllPlatforms = allPlatforms.ToList()
+                Platforms = game.Platforms ?? new List<GamesPlatform.Enums.Platforms>()
             };
             return View(editDTO);
-
         }
+
         [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Edit(EditGameDTO gameDTO)
@@ -98,16 +96,16 @@ namespace GamesPlatform.Controllers
                 }
                 return View(gameDTO);
             }
-                
+
             await gamesService.EditGameAsync(gameDTO.GameId, gameDTO);
             return RedirectToAction(nameof(Index));
         }
 
         [Authorize(Roles = "Admin")]
         [HttpGet]
-        public async Task<IActionResult> Add()
+        public IActionResult Add()
         {
-            var game = new GameDTO { ReleaseYear = DateTime.UtcNow };
+            var game = new GameDTO { ReleaseYear = DateTime.UtcNow, Platforms = new List<GamesPlatform.Enums.Platforms>() };
             return View(game);
         }
 

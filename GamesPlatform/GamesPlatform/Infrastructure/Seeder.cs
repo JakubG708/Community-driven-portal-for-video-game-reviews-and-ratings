@@ -72,9 +72,11 @@ namespace GamesPlatform.Infrastructure
                     ReleaseYear = new DateTime(2015, 5, 18, 0, 0, 0, DateTimeKind.Utc),
                     Developer = "CD Projekt Red",
                     Publisher = "CD Projekt",
-                    Platforms = new List<Platform>
+                    Platforms = new List<Platforms>
                     {
-                        new Platform { PlatformName = Enums.Platforms.PC }
+                        Platforms.PC,
+                        Platforms.PlayStation,
+                        Platforms.Xbox
                     },
                     Description = "Kultowa gra RPG o przygodach Geralta z Rivii.",
                     ImageUrl = "",

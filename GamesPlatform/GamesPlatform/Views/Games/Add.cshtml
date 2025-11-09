@@ -28,7 +28,6 @@
         <div class="row mb-3">
             <div class="col-md-6">
                 <label asp-for="ReleaseYear" class="form-label fw-bold"></label>
-                
                 <input asp-for="ReleaseYear" type="date" class="form-control" />
                 <span asp-validation-for="ReleaseYear" class="text-danger"></span>
             </div>
@@ -64,6 +63,25 @@
             <label asp-for="Description" class="form-label fw-bold"></label>
             <textarea asp-for="Description" class="form-control" rows="4"></textarea>
             <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <!-- Platforms: checkboxy z enum -->
+        <div class="mb-3">
+            <label class="form-label fw-bold">Platforms</label>
+            <div>
+                @foreach (var val in Enum.GetValues(typeof(GamesPlatform.Enums.Platforms)).Cast<GamesPlatform.Enums.Platforms>())
+                {
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input"
+                               type="checkbox"
+                               name="Platforms"
+                               value="@( (int)val )"
+                               @(Model.Platforms != null && Model.Platforms.Contains(val) ? "checked" : "") />
+                        <label class="form-check-label">@val</label>
+                    </div>
+                }
+            </div>
+            <span asp-validation-for="Platforms" class="text-danger"></span>
         </div>
 
         <div class="text-center mt-4">

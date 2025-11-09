@@ -11,6 +11,7 @@ namespace GamesPlatform.Services.Games
     {
         private readonly IDbContextFactory<ApplicationDbContext> dbFactory;
 
+
         public GamesService(IDbContextFactory<ApplicationDbContext> dbFactory)
         {
             this.dbFactory = dbFactory;
@@ -29,17 +30,18 @@ namespace GamesPlatform.Services.Games
                 Description = gameDTO.Description,
                 ImageUrl = gameDTO.ImageUrl,
                 ThumbNailUrl = gameDTO.ThumbNailUrl,
-                Platforms = new List<Platform>()
+                Platforms = gameDTO.Platforms
             };
 
             db.Games.Add(game);
+
             await db.SaveChangesAsync();
         }
 
         public async Task EditGameAsync(int id, EditGameDTO gameDTO)
         {
             using var db = await dbFactory.CreateDbContextAsync();
-            var game = await db.Games.Include(g => g.Platforms).FirstOrDefaultAsync(g => g.GameId == id);
+            var game = await db.Games.FirstOrDefaultAsync(g => g.GameId == id);
 
             if (game == null) throw new Exception("Game not found");
 
@@ -51,15 +53,8 @@ namespace GamesPlatform.Services.Games
             game.Description = gameDTO.Description;
             game.ImageUrl = gameDTO.ImageUrl;
             game.ThumbNailUrl = gameDTO.ThumbNailUrl;
+            game.Platforms = gameDTO.Platforms;
 
-            game.Platforms.Clear();
-            var selectedPlatforms = await db.Platforms
-                                           .Where(p => gameDTO.SelectedPlatformIds.Contains(p.PlatformId))
-                                           .ToListAsync();
-            foreach (var p in selectedPlatforms)
-            {
-                game.Platforms.Add(p);
-            }
 
             await db.SaveChangesAsync();
         }
@@ -72,7 +67,6 @@ namespace GamesPlatform.Services.Games
                                .Include(x => x.Reviews)
                                    .ThenInclude(r => r.User)
                                .Include(x => x.Ratings)
-                               .Include(x => x.Platforms)
                                .FirstOrDefaultAsync(x => x.GameId == id);
 
             if (game == null) throw new Exception("Game not found");

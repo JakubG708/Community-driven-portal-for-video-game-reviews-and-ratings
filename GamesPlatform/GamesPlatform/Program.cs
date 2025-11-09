@@ -2,7 +2,6 @@ using GamesPlatform.Data;
 using GamesPlatform.Infrastructure;
 using GamesPlatform.Services.Games;
 using GamesPlatform.Services.Libraries;
-using GamesPlatform.Services.Platforms;
 using GamesPlatform.Services.Ratings;
 using GamesPlatform.Services.Reviews;
 using GamesPlatform.Services.Users;
@@ -33,7 +32,6 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IGamesService, GamesService>();
-builder.Services.AddScoped<IPlatformService, PlatformService>();
 builder.Services.AddScoped<IRatingService, RatingService>();
 builder.Services.AddScoped<ILIbraryService, LibraryService>();
 builder.Services.AddScoped<IReviewsService, ReviewsService>();
